@@ -6,10 +6,12 @@ from os.path import exists, join as pathjoin
 from pygments import highlight
 from pygments.lexers import CLexer
 from pygments.formatters import HtmlFormatter
+from pygments.token import Name, Keyword
 from re import compile, match, search, sub, DOTALL
 from shutil import copy2
 from subprocess import call
 from time import strftime
+from platform import system
 
 # Define some values
 DefinesArr = []
@@ -452,7 +454,7 @@ APIdesc = "index.html"
 APIcoreName = "getdns_core_only"
 APItemplate = "APItemplate.html"
 BackupDir = "NotForSVN/Backups"
-VersionNumber = "0.350"
+VersionNumber = "0.351"
 ThisTarballName = "getdns-" + VersionNumber + ".tgz"
 TheExamplesToMake = [ 
 	"example-all-functions",
@@ -460,11 +462,21 @@ TheExamplesToMake = [
 	"example-tree", 
 	"example-synchronous", 
 ]
+
 ###### 	"example-reverse",
 
 # Function to replace stuff for HTML
 def ReplaceForHTML(InStr):
-	return(highlight(InStr.replace("\t", "    "), CLexer(), HtmlFormatter()))
+	class MyCLexer(CLexer):
+		EXTRA_TYPES = ['getdns_return_t', 'getdns_context_t', 'getdns_transaction_t']
+		def get_tokens_unprocessed(self, text):
+			for index, token, value in CLexer.get_tokens_unprocessed(self, text):
+				if token is Name and value in self.EXTRA_TYPES:
+					yield index, Keyword.Type, value
+				else:
+					yield index, token, value
+
+	return(highlight(InStr.replace("\t", "    "), MyCLexer(), HtmlFormatter()))
 
 # Backup the files
 FilesToBackup = ["MakeDNSAPI.py", APItemplate, APIcoreName + ".c"]
@@ -501,7 +513,7 @@ for ThisExample in ExampleReplacements:
 
 # Build the .h text by extracting the <div>s
 ThisSoup = BeautifulSoup(DescOut)
-AllForHDivs = ThisSoup.find_all("div", class_="forh")
+AllForHDivs = ThisSoup.find_all("div", "forh")
 FromDivs = ""
 getdnsDef = ""
 for ThisHDiv in AllForHDivs:
@@ -698,9 +710,15 @@ call("tar -czf getdns-" + VersionNumber + ".tgz " + ThisVersionName, shell=True)
 # Delete the current tar directory if it exists
 call("rm -rf " + ThisVersionName, shell=True)
 
-# Run the Mac version
-print("Running Mac making")
-MakingLines = open("make-examples-mac.sh", mode="r").readlines()
+if system() == 'Linux':
+	# Run the Linux version
+	print("Running Linux making")
+	MakingLines = open("make-examples-linux.sh", mode="r").readlines()
+else:
+	# Run the Mac version
+	print("Running Mac making")
+	MakingLines = open("make-examples-mac.sh", mode="r").readlines()
+
 for ThisLine in MakingLines:
 	print(ThisLine, end="")
 	call(ThisLine, shell=True)
