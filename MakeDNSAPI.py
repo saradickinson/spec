@@ -27,7 +27,7 @@ DefinesArr.append([ 300, "GETDNS_RETURN_", "Return values",
 	[ "NO_SUCH_DICT_NAME", "A helper function for dicts had a name argument that for a name that is not in the dict." ],
 	[ "WRONG_TYPE_REQUESTED", "A helper function was supposed to return a certain type for an item, but the wrong type was given." ],
 	[ "NO_SUCH_EXTENSION", "A name in the extensions dict is not a valid extension." ],
-	[ "EXTENSION_MISFORMAT", "One or more of the extensions is has a bad format." ],
+	[ "EXTENSION_MISFORMAT", "One or more of the extensions have a bad format." ],
 	[ "DNSSEC_WITH_STUB_DISALLOWED", "A query was made with a context that is using stub resolution and a DNSSEC extension specified." ]
 ])
 
@@ -454,7 +454,7 @@ APIdesc = "index.html"
 APIcoreName = "getdns_core_only"
 APItemplate = "APItemplate.html"
 BackupDir = "NotForSVN/Backups"
-VersionNumber = "0.353"
+VersionNumber = "0.354"
 ThisTarballName = "getdns-" + VersionNumber + ".tgz"
 TheExamplesToMake = [ 
 	"example-all-functions",
