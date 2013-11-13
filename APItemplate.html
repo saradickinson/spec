@@ -465,11 +465,11 @@ getdns_service_sync(
 <p>When you are done with the data in the response, use the following function so that the API can
 free the memory from its internal pool.</p>
 
-<div class=forh>void
-getdns_free_sync_request_memory(
+<pre>void
+getdns_dict_destroy(
   struct getdns_dict     *response
 );
-</div>
+</pre>
 
 <h1>Data structures in the API</h1>
 
