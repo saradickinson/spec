@@ -55,7 +55,7 @@ DefinesArr.append([ 500, "GETDNS_CONTEXT_", "Context Variables",
 	[ "TCP_ONLY_KEEP_CONNECTIONS_OPEN", "See getdns_context_set_dns_transport()" ],
 	[ "APPEND_NAME_ALWAYS", "See getdns_context_set_append_name()" ],
 	[ "APPEND_NAME_ONLY_TO_SINGLE_LABEL_AFTER_FAILURE", "See getdns_context_set_append_name()" ],
-	[ "GETDNS_CONTEXT_APPEND_NAME_ONLY_TO_MULTIPLE_LABEL_NAME_AFTER_FAILURE", "See getdns_context_set_append_name()" ],
+	[ "APPEND_NAME_ONLY_TO_MULTIPLE_LABEL_NAME_AFTER_FAILURE", "See getdns_context_set_append_name()" ],
 	[ "DO_NOT_APPEND_NAMES", "See getdns_context_set_append_name()" ],
 ])
 
@@ -454,7 +454,7 @@ APIdesc = "index.html"
 APIcoreName = "getdns_core_only"
 APItemplate = "APItemplate.html"
 BackupDir = "NotForSVN/Backups"
-VersionNumber = "0.352"
+VersionNumber = "0.353"
 ThisTarballName = "getdns-" + VersionNumber + ".tgz"
 TheExamplesToMake = [ 
 	"example-all-functions",
