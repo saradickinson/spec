@@ -49,10 +49,10 @@ DefinesArr.append([ 500, "GETDNS_CONTEXT_", "Context Variables",
 	[ "RECURSING", "See getdns_context_set_resolution_type()" ],
 	[ "FOLLOW_REDIRECTS", "See getdns_context_set_follow_redirects()" ],
 	[ "DO_NOT_FOLLOW_REDIRECTS", "See getdns_context_set_follow_redirects()" ],
-	[ "UDP_FIRST_AND_FALL_BACK_TO_TCP", "See getdns_context_set_use_udp_tcp()" ],
-	[ "UDP_ONLY", "See getdns_context_set_use_udp_tcp()" ],
-	[ "TCP_ONLY", "See getdns_context_set_use_udp_tcp()" ],
-	[ "TCP_ONLY_KEEP_CONNECTIONS_OPEN", "See getdns_context_set_use_udp_tcp()" ],
+	[ "UDP_FIRST_AND_FALL_BACK_TO_TCP", "See getdns_context_set_dns_transport()" ],
+	[ "UDP_ONLY", "See getdns_context_set_dns_transport()" ],
+	[ "TCP_ONLY", "See getdns_context_set_dns_transport()" ],
+	[ "TCP_ONLY_KEEP_CONNECTIONS_OPEN", "See getdns_context_set_dns_transport()" ],
 	[ "APPEND_NAME_ALWAYS", "See getdns_context_set_append_name()" ],
 	[ "APPEND_NAME_ONLY_TO_SINGLE_LABEL_AFTER_FAILURE", "See getdns_context_set_append_name()" ],
 	[ "GETDNS_CONTEXT_APPEND_NAME_ONLY_TO_MULTIPLE_LABEL_NAME_AFTER_FAILURE", "See getdns_context_set_append_name()" ],
@@ -65,7 +65,7 @@ DefinesArr.append([ 600, "GETDNS_CONTEXT_CODE_", "Context codes",
 	[ "FOLLOW_REDIRECTS", "Change related to <code>getdns_context_set_follow_redirects</code>" ],
 	[ "UPSTREAM_RECURSIVE_SERVERS", "Change related to <code>getdns_context_set_upstream_recursive_servers</code>" ],
 	[ "DNS_ROOT_SERVERS", "Change related to <code>getdns_context_set_dns_root_servers</code>" ],
-	[ "USE_UDP_TCP", "Change related to <code>getdns_context_set_use_udp_tcp</code>" ],
+	[ "DNS_TRANSPORT", "Change related to <code>getdns_context_set_dns_transport</code>" ],
 	[ "LIMIT_OUTSTANDING_QUERIES", "Change related to <code>getdns_context_set_limit_outstanding_queries</code>" ],
 	[ "APPEND_NAME", "Change related to <code>getdns_context_set_append_name</code>" ],
 	[ "SUFFIX", "Change related to <code>getdns_context_set_suffix</code>" ],
@@ -454,7 +454,7 @@ APIdesc = "index.html"
 APIcoreName = "getdns_core_only"
 APItemplate = "APItemplate.html"
 BackupDir = "NotForSVN/Backups"
-VersionNumber = "0.351"
+VersionNumber = "0.352"
 ThisTarballName = "getdns-" + VersionNumber + ".tgz"
 TheExamplesToMake = [ 
 	"example-all-functions",
