@@ -1,4 +1,4 @@
-/* Created at 2013-11-11-06-40-18*/
+/* Created at 2013-11-14-19-00-29*/
 #ifndef GETDNS_H
 #define GETDNS_H
 
@@ -31,7 +31,7 @@
 #define GETDNS_RETURN_NO_SUCH_EXTENSION 307
 #define GETDNS_RETURN_NO_SUCH_EXTENSION_TEXT A name in the extensions dict is not a valid extension.
 #define GETDNS_RETURN_EXTENSION_MISFORMAT 308
-#define GETDNS_RETURN_EXTENSION_MISFORMAT_TEXT One or more of the extensions is has a bad format.
+#define GETDNS_RETURN_EXTENSION_MISFORMAT_TEXT One or more of the extensions have a bad format.
 #define GETDNS_RETURN_DNSSEC_WITH_STUB_DISALLOWED 309
 #define GETDNS_RETURN_DNSSEC_WITH_STUB_DISALLOWED_TEXT A query was made with a context that is using stub resolution and a DNSSEC extension specified.
 
@@ -67,19 +67,19 @@
 #define GETDNS_CONTEXT_DO_NOT_FOLLOW_REDIRECTS 508
 #define GETDNS_CONTEXT_DO_NOT_FOLLOW_REDIRECTS_TEXT See getdns_context_set_follow_redirects()
 #define GETDNS_CONTEXT_UDP_FIRST_AND_FALL_BACK_TO_TCP 509
-#define GETDNS_CONTEXT_UDP_FIRST_AND_FALL_BACK_TO_TCP_TEXT See getdns_context_set_use_udp_tcp()
+#define GETDNS_CONTEXT_UDP_FIRST_AND_FALL_BACK_TO_TCP_TEXT See getdns_context_set_dns_transport()
 #define GETDNS_CONTEXT_UDP_ONLY 510
-#define GETDNS_CONTEXT_UDP_ONLY_TEXT See getdns_context_set_use_udp_tcp()
+#define GETDNS_CONTEXT_UDP_ONLY_TEXT See getdns_context_set_dns_transport()
 #define GETDNS_CONTEXT_TCP_ONLY 511
-#define GETDNS_CONTEXT_TCP_ONLY_TEXT See getdns_context_set_use_udp_tcp()
+#define GETDNS_CONTEXT_TCP_ONLY_TEXT See getdns_context_set_dns_transport()
 #define GETDNS_CONTEXT_TCP_ONLY_KEEP_CONNECTIONS_OPEN 512
-#define GETDNS_CONTEXT_TCP_ONLY_KEEP_CONNECTIONS_OPEN_TEXT See getdns_context_set_use_udp_tcp()
+#define GETDNS_CONTEXT_TCP_ONLY_KEEP_CONNECTIONS_OPEN_TEXT See getdns_context_set_dns_transport()
 #define GETDNS_CONTEXT_APPEND_NAME_ALWAYS 513
 #define GETDNS_CONTEXT_APPEND_NAME_ALWAYS_TEXT See getdns_context_set_append_name()
 #define GETDNS_CONTEXT_APPEND_NAME_ONLY_TO_SINGLE_LABEL_AFTER_FAILURE 514
 #define GETDNS_CONTEXT_APPEND_NAME_ONLY_TO_SINGLE_LABEL_AFTER_FAILURE_TEXT See getdns_context_set_append_name()
-#define GETDNS_CONTEXT_GETDNS_CONTEXT_APPEND_NAME_ONLY_TO_MULTIPLE_LABEL_NAME_AFTER_FAILURE 515
-#define GETDNS_CONTEXT_GETDNS_CONTEXT_APPEND_NAME_ONLY_TO_MULTIPLE_LABEL_NAME_AFTER_FAILURE_TEXT See getdns_context_set_append_name()
+#define GETDNS_CONTEXT_APPEND_NAME_ONLY_TO_MULTIPLE_LABEL_NAME_AFTER_FAILURE 515
+#define GETDNS_CONTEXT_APPEND_NAME_ONLY_TO_MULTIPLE_LABEL_NAME_AFTER_FAILURE_TEXT See getdns_context_set_append_name()
 #define GETDNS_CONTEXT_DO_NOT_APPEND_NAMES 516
 #define GETDNS_CONTEXT_DO_NOT_APPEND_NAMES_TEXT See getdns_context_set_append_name()
 
@@ -94,8 +94,8 @@
 #define GETDNS_CONTEXT_CODE_UPSTREAM_RECURSIVE_SERVERS_TEXT Change related to getdns_context_set_upstream_recursive_servers
 #define GETDNS_CONTEXT_CODE_DNS_ROOT_SERVERS 604
 #define GETDNS_CONTEXT_CODE_DNS_ROOT_SERVERS_TEXT Change related to getdns_context_set_dns_root_servers
-#define GETDNS_CONTEXT_CODE_USE_UDP_TCP 605
-#define GETDNS_CONTEXT_CODE_USE_UDP_TCP_TEXT Change related to getdns_context_set_use_udp_tcp
+#define GETDNS_CONTEXT_CODE_DNS_TRANSPORT 605
+#define GETDNS_CONTEXT_CODE_DNS_TRANSPORT_TEXT Change related to getdns_context_set_dns_transport
 #define GETDNS_CONTEXT_CODE_LIMIT_OUTSTANDING_QUERIES 606
 #define GETDNS_CONTEXT_CODE_LIMIT_OUTSTANDING_QUERIES_TEXT Change related to getdns_context_set_limit_outstanding_queries
 #define GETDNS_CONTEXT_CODE_APPEND_NAME 607
@@ -361,8 +361,7 @@ getdns_general_sync(
   const char             *name,
   uint16_t               request_type,
   struct getdns_dict     *extensions,
-  uint32_t               *response_length,
-  struct getdns_dict     *response
+  struct getdns_dict     **response
 );
 
 getdns_return_t
@@ -370,8 +369,7 @@ getdns_address_sync(
   getdns_context_t       context,
   const char             *name,
   struct getdns_dict     *extensions,
-  uint32_t               *response_length,
-  struct getdns_dict     *response
+  struct getdns_dict     **response
 );
 
 getdns_return_t
@@ -379,8 +377,7 @@ getdns_hostname_sync(
   getdns_context_t       context,
   struct getdns_dict     *address,
   struct getdns_dict     *extensions,
-  uint32_t               *response_length,
-  struct getdns_dict     *response
+  struct getdns_dict     **response
 );
 
 getdns_return_t
@@ -388,13 +385,7 @@ getdns_service_sync(
   getdns_context_t       context,
   const char             *name,
   struct getdns_dict     *extensions,
-  uint32_t               *response_length,
-  struct getdns_dict     *response
-);
-
-void
-getdns_free_sync_request_memory(
-  struct getdns_dict     *response
+  struct getdns_dict     **response
 );
 
 char *
