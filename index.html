@@ -324,13 +324,13 @@ that affect how DNS calls are made. For most applications, a default context is 
 <div class=forh>getdns_return_t
 getdns_context_create(
   getdns_context_t       *context,
-  int                    set_from_os
+  bool                   set_from_os
 );
 </div>
 
 <p class=cont>The call to <code>getdns_context_create</code> immediately returns a context that can
 be used with other API calls; that context contains the API's default values. Most applications will
-want <code>set_from_os</code> set to <code>1</code>.</p>
+want <code>set_from_os</code> set to <code>true</code>.</p>
 
 <p>To clean up the context, including cleaning up all outstanding transactions that were called
 using this context, use the function:</p>
@@ -1004,15 +1004,15 @@ getdns_convert_fqdn_to_dns_name(
 <div class=forh id="Various">typedef struct getdns_context_t *getdns_context_t;
 typedef uint16_t   getdns_return_t;
 typedef uint64_t   getdns_transaction_t;
-typedef enum getdns_data_type {
+typedef enum some_data_type {
     t_dict, t_list, t_int, t_bindata
 } getdns_data_type;
 typedef struct getdns_bindata {
     size_t size;
-    uint8_t *data;
-} getdns_bindata;
-typedef struct getdns_dict getdns_dict;
-typedef struct getdns_list getdns_list;
+    uint8_t *binary_stuff;
+} some_bindata;
+typedef struct getdns_dict some_dict;
+typedef struct getdns_list some_list;
 </div>
 
 <h2>5.2 <a id="ReturnCodes">Return Codes</a></h2>
@@ -1043,8 +1043,6 @@ typedef struct getdns_list getdns_list;
 <p class=descrip>One or more of the extensions have a bad format.</p>
 <p class=define>GETDNS_RETURN_DNSSEC_WITH_STUB_DISALLOWED</p>
 <p class=descrip>A query was made with a context that is using stub resolution and a DNSSEC extension specified.</p>
-<p class=define>GETDNS_RETURN_MEMORY_ERROR</p>
-<p class=descrip>Unable to allocate the memory required.</p>
 
 
 <h2>5.3 <a id="TypeList">Types of RDATA Returned in the API</a></h2>
@@ -1182,9 +1180,7 @@ and <code>certificate_or_crl</code> (a bindata)</p>
 dict with two names: <code>option_code</code> (an int) and <code>option_data</code> (a bindata).</p>
 
 <p class=define>APL (42)</p>
-<p class=descrip><code>apitems</code> (a list).
-Each element of the <code>apitems</code> list is a dict with four names:
-<code>address_family</code> (an int), <code>prefix</code> (an int),
+<p class=descrip><code>address_family</code> (an int), <code>prefix</code> (an int),
 <code>n</code> (an int), and <code>afdpart</code> (a bindata)</p>
 
 <p class=define>DS (43)</p>
@@ -1217,13 +1213,13 @@ and <code>public_key</code> (a bindata)</p>
 
 <p class=define>NSEC3 (50)</p>
 <p class=descrip><code>hash_algorithm</code> (an int), <code>flags</code> (an int),
-<code>iterations</code> (an int), <code>salt</code> (a bindata),
-<code>next_hashed_owner_name</code> (a bindata), and
+<code>iterations</code> (an int), <code>salt_length</code> (an int), <code>salt</code> (a bindata),
+<code>hash_length</code> (an int), <code>next_hashed_owner_name</code> (a bindata), and
 <code>type_bit_maps</code> (a bindata)</p>
 
 <p class=define>NSEC3PARAM (51)</p>
 <p class=descrip><code>hash_algorithm</code> (an int), <code>flags</code> (an int),
-<code>iterations</code> (an int), and
+<code>iterations</code> (an int), <code>salt_length</code> (an int), and
 <code>salt</code> (a bindata)</p>
 
 <p class=define>TLSA (52)</p>
@@ -1232,9 +1228,9 @@ and <code>public_key</code> (a bindata)</p>
 bindata).</p>
 
 <p class=define>HIP (55)</p>
-<p class=descrip><code>pk_algorithm</code> (an int),
-<code>hit</code> (a bindata), <code>public_key</code>
-(a bindata), and <code>rendezvous_servers</code> (a list) with each element a bindata with the dname of the rendezvous_server.</p>
+<p class=descrip><code>hit_length</code> (an int), <code>pk_algorithm</code> (an int),
+<code>pk_length</code> (an int), <code>hit</code> (a bindata), <code>public_key</code>
+(a bindata), and <code>rendezvous_servers</code> (a bindata)</p>
 
 <p class=define>NINFO (56)</p>
 <p class=descrip><code>ninfo_unknown</code> (a bindata)</p>
@@ -1268,19 +1264,14 @@ bindata).</p>
 <code>node_id</code> (a bindata)</p>
 
 <p class=define>L32 (105)</p>
-<p class=descrip><code>preference</code> (an int) and <code>locator32</code> (a bindata)</p>
+<p class=descrip><code>preference</code> (an int), <code>locator32_msbs</code> (a bindata),
+and <code>locator64_lsbs</code> (a bindata)</p>
 
 <p class=define>L64 (106)</p>
 <p class=descrip><code>preference</code> (an int) and <code>locator64</code> (a bindata)</p>
 
 <p class=define>LP (107)</p>
 <p class=descrip><code>preference</code> (an int) and <code>fqdn</code> (a bindata)</p>
-
-<p class=define>EUI48 (108)</p>
-<p class=descrip><code>eui48_address</code> (a bindata)</p>
-
-<p class=define>EUI64 (109)</p>
-<p class=descrip><code>eui64_address</code> (a bindata)</p>
 
 <p class=define>TKEY (249)</p>
 <p class=descrip><code>algorithm</code> (a bindata), <code>inception</code> (an int),
@@ -1291,6 +1282,12 @@ bindata).</p>
 <p class=descrip><code>algorithm</code> (a bindata), <code>time_signed</code> (a bindata),
 <code>fudge</code> (an int), <code>mac</code> (a bindata), <code>original_id</code> (an int),
 <code>error</code> (an int), and <code>other_data</code> (a bindata)</p>
+
+<p class=define>IXFR (251)</p>
+<p class=descrip><code>zones</code> (a bindata)</p>
+
+<p class=define>AXFR (252)</p>
+<p class=descrip><code>zones</code> (a bindata)</p>
 
 <p class=define>MAILB (253)</p>
 <p class=descrip><code>mailb-unknown</code> (a bindata)</p>
@@ -1388,7 +1385,7 @@ function.</p>
 <span class="p">{</span>
     <span class="cm">/* Create the DNS context for this call */</span>
     <span class="k">struct</span> <span class="kt">getdns_context_t</span> <span class="o">*</span><span class="n">this_context</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
-    <span class="kt">getdns_return_t</span> <span class="n">context_create_return</span> <span class="o">=</span> <span class="n">getdns_context_create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">this_context</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="kt">getdns_return_t</span> <span class="n">context_create_return</span> <span class="o">=</span> <span class="n">getdns_context_create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">this_context</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">context_create_return</span> <span class="o">!=</span> <span class="n">GETDNS_RETURN_GOOD</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&quot;Trying to create the context failed: %d&quot;</span><span class="p">,</span> <span class="n">context_create_return</span><span class="p">);</span>
@@ -1536,7 +1533,7 @@ their TTLs.</p>
 <span class="p">{</span>
     <span class="cm">/* Create the DNS context for this call */</span>
     <span class="k">struct</span> <span class="kt">getdns_context_t</span> <span class="o">*</span><span class="n">this_context</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
-    <span class="kt">getdns_return_t</span> <span class="n">context_create_return</span> <span class="o">=</span> <span class="n">getdns_context_create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">this_context</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="kt">getdns_return_t</span> <span class="n">context_create_return</span> <span class="o">=</span> <span class="n">getdns_context_create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">this_context</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">context_create_return</span> <span class="o">!=</span> <span class="n">GETDNS_RETURN_GOOD</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&quot;Trying to create the context failed: %d&quot;</span><span class="p">,</span> <span class="n">context_create_return</span><span class="p">);</span>
@@ -1629,7 +1626,7 @@ as it is for the synchronous example, it is just done in <code>main()</code>.</p
     <span class="kt">getdns_return_t</span> <span class="n">this_ret</span><span class="p">;</span>  <span class="cm">/* Holder for all function returns */</span>
     <span class="cm">/* Create the DNS context for this call */</span>
     <span class="k">struct</span> <span class="kt">getdns_context_t</span> <span class="o">*</span><span class="n">this_context</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
-    <span class="kt">getdns_return_t</span> <span class="n">context_create_return</span> <span class="o">=</span> <span class="n">getdns_context_create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">this_context</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="kt">getdns_return_t</span> <span class="n">context_create_return</span> <span class="o">=</span> <span class="n">getdns_context_create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">this_context</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">context_create_return</span> <span class="o">!=</span> <span class="n">GETDNS_RETURN_GOOD</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&quot;Trying to create the context failed: %d&quot;</span><span class="p">,</span> <span class="n">context_create_return</span><span class="p">);</span>
@@ -1772,10 +1769,10 @@ a single thread.</p>
 
 <p>See <a href="#ContextInitial">above</a> for the method for creating and destroying
 contexts. When the context is used in the API for the first time and <code>set_from_os</code> is
-<code>1</code>, the API starts replacing some of the values with values from the OS, such as
+<code>true</code>, the API starts replacing some of the values with values from the OS, such as
 those that would be found in res_query(3), /etc/resolv.conf, and so on, then proceeds with the new
 function. Some advanced users will not want the API to change the values to the OS's defaults; if
-<code>set_from_os</code> is <code>0</code>, the API will not do any updates to the initial
+<code>set_from_os</code> is <code>false</code>, the API will not do any updates to the initial
 values based on changes in the OS. For example, this might be useful if the API is acting
 as a stub resolver that is using a specific upstream recursive resolver chosen by the
 application, not the one that might come back from DHCP.</p>
@@ -2021,7 +2018,7 @@ getdns_context_set_edns_extended_rcode(
   getdns_context_t       context,
   uint8_t                value
 );</div>
-<p class=cont>The value is between 0 and 255; the default
+<p class=cont>The value is between 0 and 256; the default
 is <span class=default>0</span>.</p>
 
 <div class=forh>
@@ -2030,7 +2027,7 @@ getdns_context_set_edns_version(
   getdns_context_t       context,
   uint8_t                value
 );</div>
-<p class=cont>The value is between 0 and 255; the default
+<p class=cont>The value is between 0 and 256; the default
 is <span class=default>0</span>.</p>
 
 <div class=forh>
@@ -2115,7 +2112,7 @@ default is the <span class=default>realloc</span> function.</p>
 
 <h1>9. The Generated Files</h1>
 
-<p>There is <a href="getdns-0.365.tgz">a tarball</a> that includes the .h files,
+<p>There is <a href="getdns-0.356.tgz">a tarball</a> that includes the .h files,
 the examples, and so on. The examples all make, even though there is no API implementation, based
 on a pseudo-implementation in the tarball; see make-examples-PLATFORM.sh. Note that this currently builds fine
 on the Macintosh and Ubuntu; help is definitely appreciated on making the build process
