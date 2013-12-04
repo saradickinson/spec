@@ -242,7 +242,9 @@ and <code>certificate_or_crl</code> (a bindata)</p>
 dict with two names: <code>option_code</code> (an int) and <code>option_data</code> (a bindata).</p>
 
 <p class=define>APL (42)</p>
-<p class=descrip><code>address_family</code> (an int), <code>prefix</code> (an int),
+<p class=descrip><code>apitems</code> (a list).
+Each element of the <code>apitems</code> list is a dict with four names:
+<code>address_family</code> (an int), <code>prefix</code> (an int),
 <code>n</code> (an int), and <code>afdpart</code> (a bindata)</p>
 
 <p class=define>DS (43)</p>
@@ -448,7 +450,7 @@ APIdesc = "index.html"
 APIcoreName = "getdns_core_only"
 APItemplate = "APItemplate.html"
 BackupDir = "NotForSVN/Backups"
-VersionNumber = "0.360"
+VersionNumber = "0.361"
 ThisTarballName = "getdns-" + VersionNumber + ".tgz"
 TheExamplesToMake = [ 
 	"example-all-functions",
