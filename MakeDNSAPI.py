@@ -454,7 +454,7 @@ APIdesc = "index.html"
 APIcoreName = "getdns_core_only"
 APItemplate = "APItemplate.html"
 BackupDir = "NotForSVN/Backups"
-VersionNumber = "0.357"
+VersionNumber = "0.358"
 ThisTarballName = "getdns-" + VersionNumber + ".tgz"
 TheExamplesToMake = [ 
 	"example-all-functions",
@@ -633,7 +633,7 @@ outf.close()
 # Write out the .h in the proper order
 HContents = "/* Created at " + Now + "*/\n" \
 	+ "#ifndef GETDNS_H\n#define GETDNS_H\n\n" \
-	+ "#include <stdint.h>\n#include <stdlib.h>\n#include <netinet/in.h>\n#include <stdbool.h>\n\n" \
+	+ "#include <stdint.h>\n#include <stdlib.h>\n#include <netinet/in.h>\n\n" \
 	+ "#define GETDNS_COMPILATION_COMMENT The API implementation should fill in something here, "\
 	+ "such as a compilation version string and date, and change it each time the API is compiled.\n" \
 	+ hDefines + "\n" \
