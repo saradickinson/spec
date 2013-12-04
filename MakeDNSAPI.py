@@ -458,7 +458,7 @@ APIdesc = "index.html"
 APIcoreName = "getdns_core_only"
 APItemplate = "APItemplate.html"
 BackupDir = "NotForSVN/Backups"
-VersionNumber = "0.365"
+VersionNumber = "0.366"
 ThisTarballName = "getdns-" + VersionNumber + ".tgz"
 TheExamplesToMake = [ 
 	"example-all-functions",
@@ -472,7 +472,7 @@ TheExamplesToMake = [
 # Function to replace stuff for HTML
 def ReplaceForHTML(InStr):
 	class MyCLexer(CLexer):
-		EXTRA_TYPES = ['getdns_return_t', 'getdns_context_t', 'getdns_transaction_t']
+		EXTRA_TYPES = ['getdns_return_t', 'getdns_transaction_t']
 		def get_tokens_unprocessed(self, text):
 			for index, token, value in CLexer.get_tokens_unprocessed(self, text):
 				if token is Name and value in self.EXTRA_TYPES:
@@ -590,7 +590,7 @@ StuffForLibevent = "#include <event2/event.h>\n#include <" + APIcoreName + '''.h
 /* For libevent, which we are using for these examples */
 getdns_return_t
 getdns_extension_set_libevent_base(
-  getdns_context_t       context,
+  struct getdns_context  *context,
   struct event_base      *this_event_base
 );
 '''
