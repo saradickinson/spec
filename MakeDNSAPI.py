@@ -457,7 +457,7 @@ APIdesc = "index.html"
 APIcoreName = "getdns_core_only"
 APItemplate = "APItemplate.html"
 BackupDir = "NotForSVN/Backups"
-VersionNumber = "0.363"
+VersionNumber = "0.364"
 ThisTarballName = "getdns-" + VersionNumber + ".tgz"
 TheExamplesToMake = [ 
 	"example-all-functions",
@@ -570,7 +570,7 @@ for ThisArr in DefinesArr:
 		ThisText = ThisPair[1].replace("<code>", "").replace("</code>", "")
 		ThisDefineText += "<p class=define>%s</p>\n<p class=descrip>%s</p>\n" % (ThisDefine, ThisPair[1])
 		hDefines += "#define " + ThisDefine + " " + TheNum + "\n"
-		hDefines += "#define " + ThisDefine + "_TEXT " + ThisText + "\n"
+		hDefines += "#define " + ThisDefine + "_TEXT \"" + ThisText + "\"\n"
 	DescOut = DescOut.replace("<!--TABLE_FOR_CODE_" + DefineForCodes + "-->", ThisDefineText)
 # Add the RRtypes list to the defines list
 hDefines += "\n/* Defines for RRtypes (from 2012-12) */\n" + DefinesForRRtypes
