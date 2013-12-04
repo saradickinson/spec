@@ -336,6 +336,12 @@ bindata).</p>
 <p class=define>LP (107)</p>
 <p class=descrip><code>preference</code> (an int) and <code>fqdn</code> (a bindata)</p>
 
+<p class=define>EUI48 (108)</p>
+<p class=descrip><code>eui48_address</code> (a bindata)</p>
+
+<p class=define>EUI64 (109)</p>
+<p class=descrip><code>eui64_address</code> (a bindata)</p>
+
 <p class=define>TKEY (249)</p>
 <p class=descrip><code>algorithm</code> (a bindata), <code>inception</code> (an int),
 <code>expiration</code> (an int), <code>mode</code> (an int), <code>error</code> (an int),
@@ -432,6 +438,8 @@ DefinesForRRtypes = '''
 #define GETDNS_RRTYPE_L32 105
 #define GETDNS_RRTYPE_L64 106
 #define GETDNS_RRTYPE_LP 107
+#define GETDNS_RRTYPE_EUI48 108
+#define GETDNS_RRTYPE_EUI64 109
 #define GETDNS_RRTYPE_TKEY 249
 #define GETDNS_RRTYPE_TSIG 250
 #define GETDNS_RRTYPE_IXFR 251
@@ -449,7 +457,7 @@ APIdesc = "index.html"
 APIcoreName = "getdns_core_only"
 APItemplate = "APItemplate.html"
 BackupDir = "NotForSVN/Backups"
-VersionNumber = "0.362"
+VersionNumber = "0.363"
 ThisTarballName = "getdns-" + VersionNumber + ".tgz"
 TheExamplesToMake = [ 
 	"example-all-functions",
