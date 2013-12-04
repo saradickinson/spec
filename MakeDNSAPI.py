@@ -345,12 +345,6 @@ and <code>locator64_lsbs</code> (a bindata)</p>
 <code>fudge</code> (an int), <code>mac</code> (a bindata), <code>original_id</code> (an int),
 <code>error</code> (an int), and <code>other_data</code> (a bindata)</p>
 
-<p class=define>IXFR (251)</p>
-<p class=descrip><code>zones</code> (a bindata)</p>
-
-<p class=define>AXFR (252)</p>
-<p class=descrip><code>zones</code> (a bindata)</p>
-
 <p class=define>MAILB (253)</p>
 <p class=descrip><code>mailb-unknown</code> (a bindata)</p>
 
@@ -454,7 +448,7 @@ APIdesc = "index.html"
 APIcoreName = "getdns_core_only"
 APItemplate = "APItemplate.html"
 BackupDir = "NotForSVN/Backups"
-VersionNumber = "0.358"
+VersionNumber = "0.359"
 ThisTarballName = "getdns-" + VersionNumber + ".tgz"
 TheExamplesToMake = [ 
 	"example-all-functions",
