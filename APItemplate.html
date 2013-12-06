@@ -1496,7 +1496,7 @@ getdns_context_set_extended_memory_functions(
   void                  (*free)(void *userarg, void *ptr)
 );</div>
 <p class=cont>The given extended memory management functions will be used for creating the response dicts.
-The value of <code>userarg</code> argument will be passed to the custom <code>malloc<code>, <code>realloc</code>, and <code>free</code>.
+The value of <code>userarg</code> argument will be passed to the custom <code>malloc</code>, <code>realloc</code>, and <code>free</code>.
 The response dicts inherit the custom memory management functions and the value for <code>userarg</code> from the context and will deallocate themselves (and their members) with the custom deallocator.</p>
 
 <h2><a id="ContextCodes">Context Codes</a></h2>
