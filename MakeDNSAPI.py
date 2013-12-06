@@ -76,7 +76,7 @@ DefinesArr.append([ 600, "GETDNS_CONTEXT_CODE_", "Context codes",
 	[ "EDNS_VERSION", "Change related to <code>getdns_context_set_edns_version</code>" ],
 	[ "EDNS_DO_BIT", "Change related to <code>getdns_context_set_edns_do_bit</code>" ],
 	[ "DNSSEC_ALLOWED_SKEW", "Change related to <code>getdns_context_set_dnssec_allowed_skew</code>" ],
-	[ "MEMORY_FUNCTIONS", "Change related to <code>getdns_context_set_memory_function</code>" ],
+	[ "MEMORY_FUNCTIONS", "Change related to <code>getdns_context_set_memory_functions</code>" ],
 	[ "TIMEOUT", "Change related to <code>getdns_context_set_timeout</code>" ],
 ])
 
@@ -457,7 +457,7 @@ APIdesc = "index.html"
 APIcoreName = "getdns_core_only"
 APItemplate = "APItemplate.html"
 BackupDir = "NotForSVN/Backups"
-VersionNumber = "0.369"
+VersionNumber = "0.370"
 ThisTarballName = "getdns-" + VersionNumber + ".tgz"
 TheExamplesToMake = [ 
 	"example-all-functions",
