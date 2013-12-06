@@ -77,6 +77,7 @@ DefinesArr.append([ 600, "GETDNS_CONTEXT_CODE_", "Context codes",
 	[ "EDNS_DO_BIT", "Change related to <code>getdns_context_set_edns_do_bit</code>" ],
 	[ "DNSSEC_ALLOWED_SKEW", "Change related to <code>getdns_context_set_dnssec_allowed_skew</code>" ],
 	[ "MEMORY_FUNCTIONS", "Change related to <code>getdns_context_set_memory_function</code>" ],
+	[ "TIMEOUT", "Change related to <code>getdns_context_set_timeout</code>" ],
 ])
 
 DefinesArr.append([ 700, "GETDNS_CALLBACK_", "Callback Type Variables",
@@ -456,7 +457,7 @@ APIdesc = "index.html"
 APIcoreName = "getdns_core_only"
 APItemplate = "APItemplate.html"
 BackupDir = "NotForSVN/Backups"
-VersionNumber = "0.368"
+VersionNumber = "0.369"
 ThisTarballName = "getdns-" + VersionNumber + ".tgz"
 TheExamplesToMake = [ 
 	"example-all-functions",
