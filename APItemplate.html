@@ -926,7 +926,17 @@ look something like this:</p>
 <pre>
 {     # This is the response object
   "replies_full": [ &lt;bindata of the first response&gt;, &lt;bindata of the second response&gt; ],
-  "just_address_answers": [ &lt;bindata of 0x0a0b0c01&gt;, &lt;bindata of 0x33445566334455663344556633445566&gt; ],
+  "just_address_answers":
+  [
+    {
+      "address_type": &lt;bindata of "IPv4"&gt;,
+      "address_data": &lt;bindata of 0x0a0b0c01&gt;,
+    },
+    {
+      "address_type": &lt;bindata of "IPv6"&gt;,
+      "address_data": &lt;bindata of 0x33445566334455663344556633445566&gt;
+    }
+  ],
   "canonical_name": &lt;bindata of "www.example.com"&gt;,
   "answer_type": GETDNS_NAMETYPE_DNS,
   "intermediate_aliases": [],
