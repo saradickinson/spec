@@ -29,7 +29,8 @@ DefinesArr.append([ 300, "GETDNS_RETURN_", "Return values",
 	[ "NO_SUCH_EXTENSION", "A name in the extensions dict is not a valid extension." ],
 	[ "EXTENSION_MISFORMAT", "One or more of the extensions have a bad format." ],
 	[ "DNSSEC_WITH_STUB_DISALLOWED", "A query was made with a context that is using stub resolution and a DNSSEC extension specified." ],
-	[ "MEMORY_ERROR", "Unable to allocate the memory required." ]
+	[ "MEMORY_ERROR", "Unable to allocate the memory required." ],
+	[ "INVALID_PARAMETER", "A required parameter had an invalid value." ]
 ])
 
 DefinesArr.append([ 400, "GETDNS_DNSSEC_", "DNSSEC values",
@@ -457,7 +458,7 @@ APIdesc = "index.html"
 APIcoreName = "getdns_core_only"
 APItemplate = "APItemplate.html"
 BackupDir = "NotForSVN/Backups"
-VersionNumber = "0.373"
+VersionNumber = "0.374"
 ThisTarballName = "getdns-" + VersionNumber + ".tgz"
 TheExamplesToMake = [ 
 	"example-all-functions",
