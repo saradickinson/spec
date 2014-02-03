@@ -458,7 +458,7 @@ APIdesc = "index.html"
 APIcoreName = "getdns_core_only"
 APItemplate = "APItemplate.html"
 BackupDir = "NotForSVN/Backups"
-VersionNumber = "0.383"
+VersionNumber = "0.384"
 ThisTarballName = "getdns-" + VersionNumber + ".tgz"
 TheExamplesToMake = [ 
 	"example-all-functions",
@@ -503,6 +503,7 @@ ExampleReplacements = [
 	[ "EXAMPLESIMPLEANSWERS", "example-simple-answers.c" ],
 	[ "EXAMPLETREE", "example-tree.c" ],
 	[ "EXAMPLESYNCHRONOUS", "example-synchronous.c" ],
+	[ "EXAMPLEREVERSE", "example-reverse.c" ],
 ]
 ###### 	[ "EXAMPLESREVERSE", "example-reverse.c" ],
 
