@@ -1110,6 +1110,9 @@ getdns_convert_fqdn_to_dns_name(
 );
 </div>
 
+<p>The returned values are allocated with the default system allocator (<code>malloc</code>).
+The caller is responsible of disposing these allocations with free. </p>
+
 <h1>Additional Definitions and Descriptions</h1>
 
 <h2>A Few Needed Definitions</h2>
@@ -1263,6 +1266,9 @@ getdns_display_ip_address(
 <p class=cont>This returns a string that is the nicely-formatted version
 of the IPv4 or IPv6 address in it. The API determines they type of address
 by the length given in the bindata.</p>
+
+<p class=cont>All memory locations returned by these helper functions are allocated by the default system allocator (<code>malloc</code>).
+The caller is responsible of disposing these allocations with <code>free</code>.</p>
 
 <h1><a id="Contexts">DNS Contexts</a></h1>
 
