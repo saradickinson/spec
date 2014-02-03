@@ -545,6 +545,11 @@ this is only a graphical representation; the brackets, commas, quotation marks, 
 are not part of the data. Also, this document uses macro names instead of some of the int
 arguments; of course, the data structures have the actual int in them.</p>
 
+<p>The helper getter functions return references to <code>getdns_dict</code>, <code>getdns_list</code> and <code>getdns_bindata</code> data structures.
+The user must <b>not</b> destroy these retrieved "child" data structures themselves.
+They will automatically be destroyed when the containing "parent" data structure is destroyed.
+Also, retrieved "child" data structures can not be used any more after the containing "parent" data structure has been destroyed.</p>
+
 <h2>Creating Data Structures</h2>
 
 <p>Some of the features of the API require that you create your own data structures to be used in
@@ -609,6 +614,9 @@ doesn't match the contents of the indexed argument or name. The list functions w
 <code>GETDNS_RETURN_NO_SUCH_LIST_ITEM</code> if the index argument is higher than the length of the
 list. <code>getdns_dict_remove_name()</code> will return
 <code>GETDNS_RETURN_NO_SUCH_DICT_NAME</code> if the name argument doesn't exist in the dict. </p>
+
+<p>The helper setter functions store copies of the given "child" values.
+It is the responsibility of the caller to dispose of the original values.</p>
 
 <h1><a id="Extensions">Extensions</a></h1>
 
