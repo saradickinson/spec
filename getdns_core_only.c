@@ -323,13 +323,6 @@ getdns_context_set_context_update_callback(
 { UNUSED_PARAM(context); UNUSED_PARAM(value); return GETDNS_RETURN_GOOD; }
 
 getdns_return_t
-getdns_context_set_context_update(
-  struct getdns_context  *context,
-  uint16_t               value
-)
-{ UNUSED_PARAM(context); UNUSED_PARAM(value); return GETDNS_RETURN_GOOD; }
-
-getdns_return_t
 getdns_context_set_resolution_type(
   struct getdns_context  *context,
   uint16_t               value
