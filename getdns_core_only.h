@@ -1,10 +1,13 @@
-/* Created at 2014-01-15-19-36-29*/
+/* Created at 2014-02-03-20-13-55*/
 #ifndef GETDNS_H
 #define GETDNS_H
 
 #include <stdint.h>
 #include <stdlib.h>
-#include <netinet/in.h>
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 #define GETDNS_COMPILATION_COMMENT The API implementation should fill in something here, such as a compilation version string and date, and change it each time the API is compiled.
 
@@ -549,7 +552,7 @@ getdns_context_set_dnssec_allowed_skew(
 );
 
 getdns_return_t
-getdns_context_set_stub_resolution(
+getdns_context_set_upstream_recursive_servers(
   struct getdns_context  *context,
   struct getdns_list     *upstream_list
 );
@@ -595,4 +598,7 @@ getdns_context_set_extended_memory_functions(
   void                  (*free)(void *userarg, void *ptr)
 );
 
+#ifdef __cplusplus
+}
+#endif
 #endif /* GETDNS_H */

@@ -546,9 +546,9 @@ are not part of the data. Also, this document uses macro names instead of some o
 arguments; of course, the data structures have the actual int in them.</p>
 
 <p>The helper getter functions return references to <code>getdns_dict</code>, <code>getdns_list</code> and <code>getdns_bindata</code> data structures.
-The user must <b>not</b> destroy these retrieved "child" data structures themselves.
-They will automatically be destroyed when the containing "parent" data structure is destroyed.
-Also, retrieved "child" data structures can not be used any more after the containing "parent" data structure has been destroyed.</p>
+The user must not directly destroy these retrieved "child" data structures; instead, 
+they will automatically be destroyed when the containing "parent" data structure is destroyed.
+Because of this, retrieved "child" data structures cannot be used any more after the containing "parent" data structure has been destroyed.</p>
 
 <h2>Creating Data Structures</h2>
 
@@ -1110,8 +1110,8 @@ getdns_convert_fqdn_to_dns_name(
 );
 </div>
 
-<p>The returned values are allocated with the default system allocator (<code>malloc</code>).
-The caller is responsible of disposing these allocations with free. </p>
+<p>The returned values are allocated with the default system allocator, namely <code>malloc</code>.
+The caller is responsible of disposing these allocations with <code>free</code>. </p>
 
 <h1>Additional Definitions and Descriptions</h1>
 
@@ -1267,7 +1267,7 @@ getdns_display_ip_address(
 of the IPv4 or IPv6 address in it. The API determines they type of address
 by the length given in the bindata.</p>
 
-<p class=cont>All memory locations returned by these helper functions are allocated by the default system allocator (<code>malloc</code>).
+<p class=cont>All memory locations returned by these helper functions are allocated by the default system allocator, namely <code>malloc</code>.
 The caller is responsible of disposing these allocations with <code>free</code>.</p>
 
 <h1><a id="Contexts">DNS Contexts</a></h1>
