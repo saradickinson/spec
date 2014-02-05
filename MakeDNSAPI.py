@@ -15,8 +15,10 @@ from platform import system
 
 # Define some values
 DefinesArr = []
+EnumType = object()
+DefineType = object()
 
-DefinesArr.append([ 300, "GETDNS_RETURN_", "Return values",
+DefinesArr.append([ 300, "GETDNS_RETURN_", "Return values", EnumType,
 	[ "GOOD", "MAKEVAL0#Good" ],
 	[ "GENERIC_ERROR", "MAKEVAL1#Generic error" ],
 	[ "BAD_DOMAIN_NAME", "Badly-formed domain name in first argument" ],
@@ -33,7 +35,7 @@ DefinesArr.append([ 300, "GETDNS_RETURN_", "Return values",
 	[ "INVALID_PARAMETER", "A required parameter had an invalid value." ]
 ])
 
-DefinesArr.append([ 400, "GETDNS_DNSSEC_", "DNSSEC values",
+DefinesArr.append([ 400, "GETDNS_DNSSEC_", "DNSSEC values", DefineType,
 	[ "SECURE", "The record was determined to be secure in DNSSEC" ], 
 	[ "BOGUS", "The record was determined to be bogus in DNSSEC" ], 
 	[ "INDETERMINATE", "The record was not determined to be any state in DNSSEC" ], 
@@ -41,27 +43,39 @@ DefinesArr.append([ 400, "GETDNS_DNSSEC_", "DNSSEC values",
 	[ "NOT_PERFORMED", "DNSSEC validation was not performed (only used for debugging)" ],
 ])
 
-DefinesArr.append([ 500, "GETDNS_CONTEXT_", "Context Variables",
-	[ "NAMESPACE_DNS", "See getdns_context_set_namespaces()" ],
-	[ "NAMESPACE_LOCALNAMES", "See getdns_context_set_namespaces()" ],
-	[ "NAMESPACE_NETBIOS", "See getdns_context_set_namespaces()" ],
-	[ "NAMESPACE_MDNS", "See getdns_context_set_namespaces()" ],
-	[ "NAMESPACE_NIS", "See getdns_context_set_namespaces()" ],
+DefinesArr.append([ 500, "GETDNS_NAMESPACE_", "Namespace types", EnumType,
+	[ "DNS", "See getdns_context_set_namespaces()" ],
+	[ "LOCALNAMES", "See getdns_context_set_namespaces()" ],
+	[ "NETBIOS", "See getdns_context_set_namespaces()" ],
+	[ "MDNS", "See getdns_context_set_namespaces()" ],
+	[ "NIS", "See getdns_context_set_namespaces()" ]
+])
+
+DefinesArr.append([ 520, "GETDNS_RESOLUTION_", "Resolution types", EnumType,
 	[ "STUB", "See getdns_context_set_resolution_type()" ],
-	[ "RECURSING", "See getdns_context_set_resolution_type()" ],
-	[ "FOLLOW_REDIRECTS", "See getdns_context_set_follow_redirects()" ],
-	[ "DO_NOT_FOLLOW_REDIRECTS", "See getdns_context_set_follow_redirects()" ],
+	[ "RECURSING", "See getdns_context_set_resolution_type()" ]
+])
+
+DefinesArr.append([ 530, "GETDNS_REDIRECTS_", "Redirect policies", EnumType,
+	[ "FOLLOW", "See getdns_context_set_follow_redirects()" ],
+	[ "DO_NOT_FOLLOW", "See getdns_context_set_follow_redirects()" ]
+])
+
+DefinesArr.append([ 540, "GETDNS_TRANSPORT_", "Transport arrangements", EnumType,
 	[ "UDP_FIRST_AND_FALL_BACK_TO_TCP", "See getdns_context_set_dns_transport()" ],
 	[ "UDP_ONLY", "See getdns_context_set_dns_transport()" ],
 	[ "TCP_ONLY", "See getdns_context_set_dns_transport()" ],
-	[ "TCP_ONLY_KEEP_CONNECTIONS_OPEN", "See getdns_context_set_dns_transport()" ],
-	[ "APPEND_NAME_ALWAYS", "See getdns_context_set_append_name()" ],
-	[ "APPEND_NAME_ONLY_TO_SINGLE_LABEL_AFTER_FAILURE", "See getdns_context_set_append_name()" ],
-	[ "APPEND_NAME_ONLY_TO_MULTIPLE_LABEL_NAME_AFTER_FAILURE", "See getdns_context_set_append_name()" ],
-	[ "DO_NOT_APPEND_NAMES", "See getdns_context_set_append_name()" ],
+	[ "TCP_ONLY_KEEP_CONNECTIONS_OPEN", "See getdns_context_set_dns_transport()" ]
 ])
 
-DefinesArr.append([ 600, "GETDNS_CONTEXT_CODE_", "Context codes",
+DefinesArr.append([ 550, "GETDNS_APPEND_NAME_", "Suffix appending methods", EnumType,
+	[ "ALWAYS", "See getdns_context_set_append_name()" ],
+	[ "ONLY_TO_SINGLE_LABEL_AFTER_FAILURE", "See getdns_context_set_append_name()" ],
+	[ "ONLY_TO_MULTIPLE_LABEL_NAME_AFTER_FAILURE", "See getdns_context_set_append_name()" ],
+	[ "NEVER", "See getdns_context_set_append_name()" ]
+])
+
+DefinesArr.append([ 600, "GETDNS_CONTEXT_CODE_", "Context codes", EnumType,
 	[ "NAMESPACES", "Change related to <code>getdns_context_set_namespaces</code>" ],
 	[ "RESOLUTION_TYPE", "Change related to <code>getdns_context_set_resolution_type</code>" ],
 	[ "FOLLOW_REDIRECTS", "Change related to <code>getdns_context_set_follow_redirects</code>" ],
@@ -81,19 +95,19 @@ DefinesArr.append([ 600, "GETDNS_CONTEXT_CODE_", "Context codes",
 	[ "TIMEOUT", "Change related to <code>getdns_context_set_timeout</code>" ],
 ])
 
-DefinesArr.append([ 700, "GETDNS_CALLBACK_", "Callback Type Variables",
+DefinesArr.append([ 700, "GETDNS_CALLBACK_", "Callback Type Variables", EnumType,
 	[ "COMPLETE", "The response has the requested data in it" ],
 	[ "CANCEL", "The calling program cancelled the callback; response is NULL" ],
 	[ "TIMEOUT", "The requested action timed out; response is NULL" ],
 	[ "ERROR", "The requested action had an error; response is NULL" ],
 ])
 
-DefinesArr.append([ 800, "GETDNS_NAMETYPE_", "Type Of Name Services",
+DefinesArr.append([ 800, "GETDNS_NAMETYPE_", "Type Of Name Services", DefineType,
 	[ "DNS", "Normal DNS (RFC 1035)" ],
 	[ "WINS", "The WINS name service (some reference needed)" ],
 ])
 
-DefinesArr.append([ 900, "GETDNS_RESPSTATUS_", "Status Codes for Responses",
+DefinesArr.append([ 900, "GETDNS_RESPSTATUS_", "Status Codes for Responses", DefineType,
 	[ "GOOD", "At least one response was returned" ],
 	[ "NO_NAME", "Queries for the name yielded all negative responses" ],
 	[ "ALL_TIMEOUT", "All queries for the name timed out" ],
@@ -101,12 +115,12 @@ DefinesArr.append([ 900, "GETDNS_RESPSTATUS_", "Status Codes for Responses",
 		+ "response was received, but no DNS response was determined to be secure through DNSSEC." ],
 ])
 
-DefinesArr.append([ 1000, "GETDNS_EXTENSION_", "Values Associated With Extensions",
+DefinesArr.append([ 1000, "GETDNS_EXTENSION_", "Values Associated With Extensions", DefineType,
 	[ "TRUE", "Turn on the extension" ],
 	[ "FALSE", "Do not turn on the extension" ],
 ])
 
-DefinesArr.append([ 1100, "GETDNS_BAD_DNS_", "Values Associated With DNS Errors Found By The API",
+DefinesArr.append([ 1100, "GETDNS_BAD_DNS_", "Values Associated With DNS Errors Found By The API", DefineType,
 	[ "CNAME_IN_TARGET", "A DNS query type that does not allow a target to be a CNAME pointed to a CNAME" ],
 	[ "ALL_NUMERIC_LABEL", "One or more labels in a returned domain name is all-numeric; this is not legal for a hostname" ],
 	[ "CNAME_RETURNED_FOR_OTHER_TYPE", "A DNS query for a type other than CNAME returned a CNAME response" ],
@@ -458,7 +472,7 @@ APIdesc = "index.html"
 APIcoreName = "getdns_core_only"
 APItemplate = "APItemplate.html"
 BackupDir = "NotForSVN/Backups"
-VersionNumber = "0.386"
+VersionNumber = "0.387"
 ThisTarballName = "getdns-" + VersionNumber + ".tgz"
 TheExamplesToMake = [ 
 	"example-all-functions",
@@ -546,6 +560,7 @@ for ThisHDiv in AllForHDivs:
 		exit("Weird: found an id in a div that was unexpected: " + ThisHDiv["id"] + ". Exiting.")
 
 # Define the things that go in the .h
+hEnums = ""
 hDefines = ""
 HexPat = compile(r'MAKEVAL(\d+)#')
 for ThisArr in DefinesArr:
@@ -553,10 +568,21 @@ for ThisArr in DefinesArr:
 	ThisCode = ThisArr[0]  # Number to start defines at
 	DefineForCodes = ThisArr[1]  # Prefix, such as GETDNS_SOMETHING_
 	ThisSectionTitle = ThisArr[2]  # Title for the definitions in the .h
-	ThisSectionItems = ThisArr[3:]  # Array of items for this list
+	IsEnumType = ThisArr[3] is EnumType
+	ThisSectionItems = ThisArr[4:]  # Array of items for this list
 	ThisSectionID = ThisSectionTitle.replace(" ", "_")
+
 	ThisDefineText = ""
-	hDefines += "\n/* " + ThisSectionTitle + " */\n"
+	hEnums += "\n/* " + ThisSectionTitle + " */\n"
+	hEnumTexts = ""
+	if IsEnumType:
+		EnumName = DefineForCodes.lower() + "t"
+		if EnumName in ( "getdns_callback_t",):
+			EnumName += "ype_t"
+		hEnums += "typedef enum " + EnumName + " {\n"
+		enum_elements = list()
+		prev = -2
+
 	# After the first four fields, the rest are arrays of name/string pairs
 	for ThisPair in ThisSectionItems:
 		# See if the second field in this pair starts with "MAKEVALnnn#";
@@ -571,11 +597,21 @@ for ThisArr in DefinesArr:
 		ThisDefine = DefineForCodes + ThisPair[0]
 		ThisText = ThisPair[1].replace("<code>", "").replace("</code>", "")
 		ThisDefineText += "<p class=define>%s</p>\n<p class=descrip>%s</p>\n" % (ThisDefine, ThisPair[1])
-		hDefines += "#define " + ThisDefine + " " + TheNum + "\n"
-		hDefines += "#define " + ThisDefine + "_TEXT \"" + ThisText + "\"\n"
+		if IsEnumType:
+			enum_elements.append("\t" + ThisDefine + 
+			    (" = " + TheNum if int(TheNum) != prev + 1 or True else ""))
+			prev = int(TheNum) 
+			hEnumTexts += "#define " + ThisDefine + "_TEXT \"" + ThisText + "\"\n"
+		else:
+			hEnumTexts += "#define " + ThisDefine + " " + TheNum + "\n"
+			hEnumTexts += "#define " + ThisDefine + "_TEXT \"" + ThisText + "\"\n"
+	if IsEnumType:
+		hEnums += ",\n".join(enum_elements)
+		hEnums += "\n} " + EnumName + ";\n\n"
+	hEnums += hEnumTexts
 	DescOut = DescOut.replace("<!--TABLE_FOR_CODE_" + DefineForCodes + "-->", ThisDefineText)
 # Add the RRtypes list to the defines list
-hDefines += "\n/* Defines for RRtypes (from 2012-12) */\n" + DefinesForRRtypes
+hDefines += "/* Defines for RRtypes (from 2014-02) */" + DefinesForRRtypes
 
 # Do the rest of the replacements
 CommentRepacements = [
@@ -644,6 +680,7 @@ HContents = "/* Created at " + Now + "*/\n" \
 	+ "#endif\n\n" \
 	+ "#define GETDNS_COMPILATION_COMMENT The API implementation should fill in something here, "\
 	+ "such as a compilation version string and date, and change it each time the API is compiled.\n" \
+	+ hEnums + "\n" \
 	+ hDefines + "\n" \
 	+ "/* Various typedefs  */\n" + VariousDefs + "\n" \
 	+ "/* Helper functions for data structures */\n" + DataGettersDef + "\n" + DataSettersDef + "\n" \
@@ -665,7 +702,7 @@ GETDNS_Pat = compile(r'(GETDNS_\w*)')
 AllDefinesFound = GETDNS_Pat.findall(DescOut)
 DefinesToIgnore = [ "GETDNS_COMPILATION_COMMENT" ]  # Use this if you later have defines that need to be ignored
 for ThisDefine in sorted(AllDefinesFound):
-	if (ThisDefine in hDefines) == False:
+	if ThisDefine not in hDefines and ThisDefine not in hEnums:
 		if (ThisDefine in DefinesToIgnore) == False:
 			print("Found " + ThisDefine + " in HTML, but not in .h")
 
