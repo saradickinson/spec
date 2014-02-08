@@ -22,7 +22,7 @@ DefinesArr.append([ 300, "GETDNS_RETURN_", "Return values", EnumType,
 	[ "GOOD", "MAKEVAL0#Good" ],
 	[ "GENERIC_ERROR", "MAKEVAL1#Generic error" ],
 	[ "BAD_DOMAIN_NAME", "Badly-formed domain name in first argument" ],
-	[ "BAD_CONTEXT", "Bad value for a context type" ],
+	[ "BAD_CONTEXT", "The context has internal deficiencies" ],
 	[ "CONTEXT_UPDATE_FAIL", "Did not update the context" ],
 	[ "UNKNOWN_TRANSACTION", "An attempt was made to cancel a callback with a transaction_id that is not recognized" ],
 	[ "NO_SUCH_LIST_ITEM", "A helper function for lists had an index argument that was too high." ],
@@ -472,7 +472,7 @@ APIdesc = "index.html"
 APIcoreName = "getdns_core_only"
 APItemplate = "APItemplate.html"
 BackupDir = "NotForSVN/Backups"
-VersionNumber = "0.390"
+VersionNumber = "0.391"
 ThisTarballName = "getdns-" + VersionNumber + ".tgz"
 TheExamplesToMake = [ 
 	"example-all-functions",

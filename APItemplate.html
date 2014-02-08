@@ -198,7 +198,7 @@ results are unpredictable.</p>
 
 <p>The async <code>getdns</code> functions return <code>GETDNS_RETURN_GOOD</code> if the call was properly formatted.
 It returns <code>GETDNS_RETURN_BAD_DOMAIN_NAME</code> if the API determines that the name passed to
-the function was bad, <code>GETDNS_RETURN_BAD_CONTEXT</code> if the context pointer is bad,
+the function was bad, <code>GETDNS_RETURN_BAD_CONTEXT</code> if the context has internal deficiencies,
 <code>GETDNS_RETURN_NO_SUCH_EXTENSION</code> if one or more extensions do not exist, or
 <code>GETDNS_RETURN_EXTENSION_MISFORMAT</code> if the contents of one or more of the
 extensions is incorrect. All of the return values are given <a
@@ -1320,8 +1320,7 @@ for the API default context.</p>
 
 <p>Setting specific values in a context are done with value-specific
 functions shown here. The setting functions all return either <code>GETDNS_RETURN_GOOD</code> for
-success, <code>GETDNS_RETURN_BAD_CONTEXT</code> for trying to set a type with a value that
-is not allowed, or <code>GETDNS_RETURN_CONTEXT_UPDATE_FAIL</code> for a failure to update the context.</p>
+success or <code>GETDNS_RETURN_CONTEXT_UPDATE_FAIL</code> for a failure to update the context.</p>
 
 <p>An application can be notified when the context is changed.</p>
 
