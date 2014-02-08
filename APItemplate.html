@@ -97,7 +97,7 @@ tr.code { font-family: monospace }
 
 <p class=title>Description of the <code>getdns</code> API</p>
 <p class=title2>Paul Hoffman, Editor</p>
-<p class=title2>Document version: "getdns December 2013"</p>
+<p class=title2>Document version: "getdns Februari 2014"</p>
 
 <p>This document describes a modern asynchronous DNS API. This new API is intended to be useful to
 application developers and operating system distributors as a way of making
@@ -1181,11 +1181,11 @@ struct getdns_dict * this_extensions = getdns_dict_create();
 this_ret = getdns_dict_set_int(this_extensions, "return_both_v4_and_v6", GETDNS_EXTENSION_TRUE);
 this_ret = getdns_dict_set_int(this_extensions, "dnssec_return_status", GETDNS_EXTENSION_TRUE);
 . . .
-if (*this_type == GETDNS_RRTYPE_A)
+if (this_type == GETDNS_RRTYPE_A)
 {
     uint32_t * this_dnssec_status;
-    this_ret = getdns_dict_get_int(this_rdata, "dnssec_status", this_dnssec_status);
-    if (&amp;this_dnssec_status != GETDNS_DNSSEC_SECURE)
+    this_ret = getdns_dict_get_int(this_rdata, "dnssec_status", &amp;this_dnssec_status);
+    if (this_dnssec_status != GETDNS_DNSSEC_SECURE)
     {
         // Log the DNSSEC status somewhere
     }
