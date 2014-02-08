@@ -1412,7 +1412,7 @@ the number of outstanding DNS queries is unlimited.</p>
 getdns_return_t
 getdns_context_set_timeout(
   struct getdns_context  *context,
-  unsigned int           timeout
+  uint64_t               timeout
 );</div>
 <p class=cont>Specifies number of milliseconds the API will wait for request to return.
 The default is <span class=default>not specified</span>.</p>
@@ -1490,9 +1490,9 @@ are expressed as RDATAs from DNSKEY resource records.</p>
 getdns_return_t
 getdns_context_set_dnssec_allowed_skew(
   struct getdns_context  *context,
-  unsigned int           value
+  uint32_t               value
 );</div>
-<p class=cont>The value is the number of milliseconds of skew that is allowed in either direction when
+<p class=cont>The value is the number of seconds of skew that is allowed in either direction when
 checking an RRSIG's Expiration and Inception fields. The default
 is <span class=default>0</span>.</p>
 
