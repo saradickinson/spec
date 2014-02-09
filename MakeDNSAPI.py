@@ -461,6 +461,7 @@ DefinesForRRtypes = '''
 #define GETDNS_RRTYPE_AXFR 252
 #define GETDNS_RRTYPE_MAILB 253
 #define GETDNS_RRTYPE_MAILA 254
+#define GETDNS_RRTYPE_ANY 255
 #define GETDNS_RRTYPE_URI 256
 #define GETDNS_RRTYPE_CAA 257
 #define GETDNS_RRTYPE_TA 32768
@@ -472,7 +473,7 @@ APIdesc = "index.html"
 APIcoreName = "getdns_core_only"
 APItemplate = "APItemplate.html"
 BackupDir = "NotForSVN/Backups"
-VersionNumber = "0.391"
+VersionNumber = "0.392"
 ThisTarballName = "getdns-" + VersionNumber + ".tgz"
 TheExamplesToMake = [ 
 	"example-all-functions",
