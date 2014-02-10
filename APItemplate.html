@@ -1336,6 +1336,7 @@ changes from the API (such as changes to /etc/resolv.conf), or might be from any
 API functions in this section being called. The second argument to the callback function
 specifies which of the context changed; the context codes are listed
 <a href="#ContextCodes">later in this document</a>.</p>
+<p class=cont>Calling getdns_context_set_context_update_callback with a second argument of NULL prevents updates to the context from causing callbacks.</p>
 
 <h2>Contexts for Basic Resolution</h2>
 
