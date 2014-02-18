@@ -664,9 +664,9 @@ getdns_dict_destroy(this_extensions);
 
 <h2>Extensions for DNSSEC</h2>
 
-<p>If an application wants the API to do DNSSEC validation for a request, it must set one or more
-DNSSEC-related extensions. Note that the default is for none of these extensions to be set and
-the API will not perform DNSSEC, and thus will return results sooner.</p>
+<p>If an application wants the API to do DNSSEC validation for a request, it must set one or more DNSSEC-related extensions.
+Note that the default is for none of these extensions to be set and the API will not perform DNSSEC.
+Note that getting DNSSEC results can take longer in a few circumstances.</p>
 
 <p>To return the DNSSEC status for each DNS record in the <code>replies_tree</code> list, use the
 <code>dnssec_return_status</code> extension. The extension's value (an int) is set to
