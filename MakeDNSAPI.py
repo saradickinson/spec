@@ -491,11 +491,11 @@ DefinesForRcodes= '''
 '''
 
 DefinesForRRclasses= '''
-#define GETDNS_RR_CLASS_IN     1
-#define GETDNS_RR_CLASS_CH     3
-#define GETDNS_RR_CLASS_HS     4
-#define GETDNS_RR_CLASS_NONE 254
-#define GETDNS_RR_CLASS_ANY  255
+#define GETDNS_RRCLASS_IN     1
+#define GETDNS_RRCLASS_CH     3
+#define GETDNS_RRCLASS_HS     4
+#define GETDNS_RRCLASS_NONE 254
+#define GETDNS_RRCLASS_ANY  255
 '''
 
 Now = strftime("%Y-%m-%d-%H-%M-%S")
@@ -503,7 +503,7 @@ APIdesc = "index.html"
 APIcoreName = "getdns_core_only"
 APItemplate = "APItemplate.html"
 BackupDir = "NotForSVN/Backups"
-VersionNumber = "0.397"
+VersionNumber = "0.398"
 ThisTarballName = "getdns-" + VersionNumber + ".tgz"
 TheExamplesToMake = [ 
 	"example-all-functions",
