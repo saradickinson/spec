@@ -468,12 +468,42 @@ DefinesForRRtypes = '''
 #define GETDNS_RRTYPE_DLV 32769
 '''
 
+DefinesForOpcodes= '''
+#define GETDNS_OPCODE_QUERY  0
+#define GETDNS_OPCODE_IQUERY 1
+#define GETDNS_OPCODE_STATUS 2
+#define GETDNS_OPCODE_NOTIFY 4
+#define GETDNS_OPCODE_UPDATE 5
+'''
+
+DefinesForRcodes= '''
+#define GETDNS_RCODE_NOERROR  0
+#define GETDNS_RCODE_FORMERR  1
+#define GETDNS_RCODE_SERVFAIL 2
+#define GETDNS_RCODE_NXDOMAIN 3
+#define GETDNS_RCODE_NOTIMPL  4
+#define GETDNS_RCODE_REFUSED  5
+#define GETDNS_RCODE_YXDOMAIN 6
+#define GETDNS_RCODE_YXRRSET  7
+#define GETDNS_RCODE_NXRRSET  8
+#define GETDNS_RCODE_NOTAUTH  9
+#define GETDNS_RCODE_NOTZONE 10
+'''
+
+DefinesForRRclasses= '''
+#define GETDNS_RR_CLASS_IN     1
+#define GETDNS_RR_CLASS_CH     3
+#define GETDNS_RR_CLASS_HS     4
+#define GETDNS_RR_CLASS_NONE 254
+#define GETDNS_RR_CLASS_ANY  255
+'''
+
 Now = strftime("%Y-%m-%d-%H-%M-%S")
 APIdesc = "index.html"
 APIcoreName = "getdns_core_only"
 APItemplate = "APItemplate.html"
 BackupDir = "NotForSVN/Backups"
-VersionNumber = "0.394"
+VersionNumber = "0.395"
 ThisTarballName = "getdns-" + VersionNumber + ".tgz"
 TheExamplesToMake = [ 
 	"example-all-functions",
@@ -612,7 +642,10 @@ for ThisArr in DefinesArr:
 	hEnums += hEnumTexts
 	DescOut = DescOut.replace("<!--TABLE_FOR_CODE_" + DefineForCodes + "-->", ThisDefineText)
 # Add the RRtypes list to the defines list
-hDefines += "/* Defines for RRtypes (from 2014-02) */" + DefinesForRRtypes
+hDefines += "\n/* Defines for RRtypes (from 2014-02) */" + DefinesForRRtypes
+hDefines += "\n/* Defines for RRclasses (from 2014-02) */" + DefinesForRRclasses
+hDefines += "\n/* Defines for Opcodes (from 2014-02) */" + DefinesForOpcodes
+hDefines += "\n/* Defines for Rcodes (from 2014-02) */" + DefinesForRcodes
 
 # Do the rest of the replacements
 CommentRepacements = [
