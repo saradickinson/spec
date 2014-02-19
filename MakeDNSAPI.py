@@ -477,17 +477,25 @@ DefinesForOpcodes= '''
 '''
 
 DefinesForRcodes= '''
-#define GETDNS_RCODE_NOERROR  0
-#define GETDNS_RCODE_FORMERR  1
-#define GETDNS_RCODE_SERVFAIL 2
-#define GETDNS_RCODE_NXDOMAIN 3
-#define GETDNS_RCODE_NOTIMPL  4
-#define GETDNS_RCODE_REFUSED  5
-#define GETDNS_RCODE_YXDOMAIN 6
-#define GETDNS_RCODE_YXRRSET  7
-#define GETDNS_RCODE_NXRRSET  8
-#define GETDNS_RCODE_NOTAUTH  9
-#define GETDNS_RCODE_NOTZONE 10
+#define GETDNS_RCODE_NOERROR   0
+#define GETDNS_RCODE_FORMERR   1
+#define GETDNS_RCODE_SERVFAIL  2
+#define GETDNS_RCODE_NXDOMAIN  3
+#define GETDNS_RCODE_NOTIMP    4
+#define GETDNS_RCODE_REFUSED   5
+#define GETDNS_RCODE_YXDOMAIN  6
+#define GETDNS_RCODE_YXRRSET   7
+#define GETDNS_RCODE_NXRRSET   8
+#define GETDNS_RCODE_NOTAUTH   9
+#define GETDNS_RCODE_NOTZONE  10
+#define GETDNS_RCODE_BADVERS  16
+#define GETDNS_RCODE_BADSIG   16
+#define GETDNS_RCODE_BADKEY   17
+#define GETDNS_RCODE_BADTIME  18
+#define GETDNS_RCODE_BADMODE  19
+#define GETDNS_RCODE_BADNAME  20
+#define GETDNS_RCODE_BADALG   21
+#define GETDNS_RCODE_BADTRUNC 22
 '''
 
 DefinesForRRclasses= '''
@@ -503,7 +511,7 @@ APIdesc = "index.html"
 APIcoreName = "getdns_core_only"
 APItemplate = "APItemplate.html"
 BackupDir = "NotForSVN/Backups"
-VersionNumber = "0.398"
+VersionNumber = "0.399"
 ThisTarballName = "getdns-" + VersionNumber + ".tgz"
 TheExamplesToMake = [ 
 	"example-all-functions",
