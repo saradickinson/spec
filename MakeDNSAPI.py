@@ -511,7 +511,7 @@ APIdesc = "index.html"
 APIcoreName = "getdns_core_only"
 APItemplate = "APItemplate.html"
 BackupDir = "NotForSVN/Backups"
-VersionNumber = "0.399"
+VersionNumber = "0.400"
 ThisTarballName = "getdns-" + VersionNumber + ".tgz"
 TheExamplesToMake = [ 
 	"example-all-functions",
@@ -669,8 +669,8 @@ StuffForLibevent = "#include <event2/event.h>\n#include <" + APIcoreName + '''.h
 /* For libevent, which we are using for these examples */
 getdns_return_t
 getdns_extension_set_libevent_base(
-  struct getdns_context  *context,
-  struct event_base      *this_event_base
+  getdns_context     *context,
+  struct event_base  *this_event_base
 );
 '''
 
