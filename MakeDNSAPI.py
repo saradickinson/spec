@@ -511,7 +511,7 @@ APIdesc = "index.html"
 APIcoreName = "getdns_core_only"
 APItemplate = "APItemplate.html"
 BackupDir = "NotForSVN/Backups"
-VersionNumber = "0.400"
+VersionNumber = "0.401"
 ThisTarballName = "getdns-" + VersionNumber + ".tgz"
 TheExamplesToMake = [ 
 	"example-all-functions",
@@ -716,7 +716,7 @@ outf.close()
 # Write out the .h in the proper order
 HContents = "/* Created at " + Now + "*/\n" \
 	+ "#ifndef GETDNS_H\n#define GETDNS_H\n\n" \
-	+ "#include <stdint.h>\n#include <stdlib.h>\n\n" \
+	+ "#include <stdint.h>\n#include <stdlib.h>\n#include <time.h>\n\n" \
 	+ "#ifdef __cplusplus\n" \
 	+ "extern \"C\" {\n" \
 	+ "#endif\n\n" \

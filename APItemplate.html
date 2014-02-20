@@ -1247,6 +1247,21 @@ The API will use the resource records in <code>bundle_of_support_records</code> 
 The function returns one of <code>GETDNS_DNSSEC_SECURE</code>, <code>GETDNS_DNSSEC_BOGUS</code>, <code>GETDNS_DNSSEC_INDETERMINATE</code>, or <code>GETDNS_DNSSEC_INSECURE</code>.
 </p>
 
+<p class=cont>
+The default list of trust anchor records that is used by the library to validate DNSSEC can
+be retrieved by using the <code>getdns_root_trust_anchor</code> helper function.</p>
+<div class=forh>getdns_list *
+getdns_root_trust_anchor(
+  time_t *utc_date_of_anchor
+);
+</div>
+<p class=cont>
+When there are no default trust anchors <code>NULL</code> is returned.
+Upon successful return, the variable of type <code>time_t</code>, referenced by
+<code>utc_date_of_anchor</code> is set to the number of seconds since epoch
+the trust anchors were obtained.
+</p>
+
 <p>There are two functions that help process data:</p>
 
 <div class=forh>
