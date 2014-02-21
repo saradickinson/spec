@@ -9,7 +9,7 @@
 
 /* Set up the callback function, which will also do the processing of the results */
 void this_callbackfn(getdns_context *this_context,
-                     uint16_t     this_callback_type,
+                     getdns_callback_type_t this_callback_type,
                      getdns_dict *this_response, 
                      void *this_userarg,
                      getdns_transaction_t this_transaction_id)
@@ -58,10 +58,8 @@ void this_callbackfn(getdns_context *this_context,
 
 					getdns_bindata * this_dname;
 					this_ret = getdns_dict_get_bindata(this_rdata, "rdata_raw", &this_dname);
-					char *this_dname_str = getdns_convert_dns_name_to_fqdn((char *)this_dname->data);
-					printf("The dname is %s\n", this_dname_str);
-					free(this_dname_str);
-
+					char *this_dname_str;
+				       	this_ret = getdns_convert_dns_name_to_fqdn(this_dname, &this_dname_str); // Ignore any error
 				}
 			}
 
