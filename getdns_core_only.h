@@ -1,4 +1,4 @@
-/* Created at 2014-02-20-15-20-47*/
+/* Created at 2014-02-21-11-10-46*/
 #ifndef GETDNS_H
 #define GETDNS_H
 
@@ -671,6 +671,11 @@ getdns_context_set_extended_memory_functions(
   void           *(*malloc)(void *userarg, size_t sz),
   void           *(*realloc)(void *userarg, void *ptr, size_t sz),
   void           (*free)(void *userarg, void *ptr)
+);
+
+getdns_dict *
+getdns_context_get_api_information(
+  getdns_context *context
 );
 
 #ifdef __cplusplus
