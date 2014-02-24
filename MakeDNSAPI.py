@@ -511,16 +511,15 @@ APIdesc = "index.html"
 APIcoreName = "getdns_core_only"
 APItemplate = "APItemplate.html"
 BackupDir = "NotForSVN/Backups"
-VersionNumber = "0.404"
+VersionNumber = "0.5"
 ThisTarballName = "getdns-" + VersionNumber + ".tgz"
 TheExamplesToMake = [ 
 	"example-all-functions",
 	"example-simple-answers", 
 	"example-tree", 
-	"example-synchronous", 
+	"example-synchronous",
+	"example-reverse",
 ]
-
-###### 	"example-reverse",
 
 # Function to replace stuff for HTML
 def ReplaceForHTML(InStr):
@@ -558,7 +557,6 @@ ExampleReplacements = [
 	[ "EXAMPLESYNCHRONOUS", "example-synchronous.c" ],
 	[ "EXAMPLEREVERSE", "example-reverse.c" ],
 ]
-###### 	[ "EXAMPLESREVERSE", "example-reverse.c" ],
 
 for ThisExample in ExampleReplacements:
 	try:
