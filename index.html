@@ -1905,6 +1905,8 @@ as it is for the synchronous example, it is just done in <code>main()</code>.</p
                     <span class="n">this_ret</span> <span class="o">=</span> <span class="n">getdns_dict_get_bindata</span><span class="p">(</span><span class="n">this_rdata</span><span class="p">,</span> <span class="s">&quot;rdata_raw&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">this_dname</span><span class="p">);</span>
                     <span class="kt">char</span> <span class="o">*</span><span class="n">this_dname_str</span><span class="p">;</span>
                            <span class="n">this_ret</span> <span class="o">=</span> <span class="n">getdns_convert_dns_name_to_fqdn</span><span class="p">(</span><span class="n">this_dname</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">this_dname_str</span><span class="p">);</span> <span class="c1">// Ignore any error</span>
+                    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;The dname is %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">this_dname_str</span><span class="p">);</span>
+                    <span class="n">free</span><span class="p">(</span><span class="n">this_dname_str</span><span class="p">);</span>
                 <span class="p">}</span>
             <span class="p">}</span>
 
