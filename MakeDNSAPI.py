@@ -98,7 +98,7 @@ DefinesArr.append([ 600, "GETDNS_CONTEXT_CODE_", "Context codes", EnumType,
 DefinesArr.append([ 700, "GETDNS_CALLBACK_", "Callback Type Variables", EnumType,
 	[ "COMPLETE", "The response has the requested data in it" ],
 	[ "CANCEL", "The calling program cancelled the callback; response is NULL" ],
-	[ "TIMEOUT", "The requested action timed out; response is NULL" ],
+	[ "TIMEOUT", "The requested action timed out; response is filled in with empty structures" ],
 	[ "ERROR", "The requested action had an error; response is NULL" ],
 ])
 

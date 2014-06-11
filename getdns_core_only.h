@@ -1,4 +1,4 @@
-/* Created at 2014-02-24-07-59-05*/
+/* Created at 2014-06-10-11-23-59*/
 #ifndef GETDNS_H
 #define GETDNS_H
 
@@ -165,7 +165,7 @@ typedef enum getdns_callback_type_t {
 
 #define GETDNS_CALLBACK_COMPLETE_TEXT "The response has the requested data in it"
 #define GETDNS_CALLBACK_CANCEL_TEXT "The calling program cancelled the callback; response is NULL"
-#define GETDNS_CALLBACK_TIMEOUT_TEXT "The requested action timed out; response is NULL"
+#define GETDNS_CALLBACK_TIMEOUT_TEXT "The requested action timed out; response is filled in with empty structures"
 #define GETDNS_CALLBACK_ERROR_TEXT "The requested action had an error; response is NULL"
 
 /* Type Of Name Services */
