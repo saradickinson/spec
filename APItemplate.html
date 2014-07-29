@@ -1155,8 +1155,8 @@ this_ret = getdns_dict_set_int(this_extensions, "dnssec_return_status", GETDNS_E
 . . .
 if (this_type == GETDNS_RRTYPE_A)
 {
-    uint32_t * this_dnssec_status;
-    this_ret = getdns_dict_get_int(this_rdata, "dnssec_status", &amp;this_dnssec_status);
+    uint32_t this_dnssec_status;
+    this_ret = getdns_dict_get_int(this_answer, "dnssec_status", &amp;this_dnssec_status);
     if (this_dnssec_status != GETDNS_DNSSEC_SECURE)
     {
         // Log the DNSSEC status somewhere
