@@ -323,6 +323,12 @@ bindata).</p>
 <p class=define>CDS (59)</p>
 <p class=descrip><code>cds_unknown</code> (a bindata)</p>
 
+<p class=define>CDNSKEY (60)</p>
+<p class=descrip><code>cdnskey_unknown</code> (a bindata)</p>
+
+<p class=define>OPENPGPKEY (61)</p>
+<p class=descrip><code>openpgpkey_unknown</code> (a bindata)</p>
+
 <p class=define>SPF (99)</p>
 <p class=descrip><code>text</code> (a bindata)</p>
 
@@ -444,6 +450,8 @@ DefinesForRRtypes = '''
 #define GETDNS_RRTYPE_RKEY 57
 #define GETDNS_RRTYPE_TALINK 58
 #define GETDNS_RRTYPE_CDS 59
+#define GETDNS_RRTYPE_CDNSKEY 60
+#define GETDNS_RRTYPE_OPENPGPKEY 61
 #define GETDNS_RRTYPE_SPF 99
 #define GETDNS_RRTYPE_UINFO 100
 #define GETDNS_RRTYPE_UID 101
@@ -511,7 +519,7 @@ APIdesc = "index.html"
 APIcoreName = "getdns_core_only"
 APItemplate = "APItemplate.html"
 BackupDir = "NotForSVN/Backups"
-VersionNumber = "0.502"
+VersionNumber = "0.503"
 ThisTarballName = "getdns-" + VersionNumber + ".tgz"
 TheExamplesToMake = [ 
 	"example-all-functions",

@@ -1,4 +1,4 @@
-/* Created at 2014-06-10-11-23-59*/
+/* Created at 2014-09-03-12-22-31*/
 #ifndef GETDNS_H
 #define GETDNS_H
 
@@ -256,6 +256,8 @@ typedef enum getdns_callback_type_t {
 #define GETDNS_RRTYPE_RKEY 57
 #define GETDNS_RRTYPE_TALINK 58
 #define GETDNS_RRTYPE_CDS 59
+#define GETDNS_RRTYPE_CDNSKEY 60
+#define GETDNS_RRTYPE_OPENPGPKEY 61
 #define GETDNS_RRTYPE_SPF 99
 #define GETDNS_RRTYPE_UINFO 100
 #define GETDNS_RRTYPE_UID 101
