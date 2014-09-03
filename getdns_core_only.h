@@ -1,4 +1,4 @@
-/* Created at 2014-09-03-12-22-31*/
+/* Created at 2014-09-03-14-20-05*/
 #ifndef GETDNS_H
 #define GETDNS_H
 
