@@ -324,10 +324,12 @@ bindata).</p>
 <p class=descrip><code>talink_unknown</code> (a bindata)</p>
 
 <p class=define>CDS (59)</p>
-<p class=descrip><code>cds_unknown</code> (a bindata)</p>
+<p class=descrip><code>key_tag</code> (an int), <code>algorithm</code> (an int), <code>digest_type</code> (an int), 
+and <code>digest</code> (a bindata)</p>
 
 <p class=define>CDNSKEY (60)</p>
-<p class=descrip><code>cdnskey_unknown</code> (a bindata)</p>
+<p class=descrip><code>flags</code> (an int), <code>protocol</code> (an int), <code>algorithm</code> (an int), 
+and <code>public_key</code> (a bindata)</p>
 
 <p class=define>OPENPGPKEY (61)</p>
 <p class=descrip><code>openpgpkey_unknown</code> (a bindata)</p>
@@ -522,7 +524,7 @@ APIdesc = "index.html"
 APIcoreName = "getdns_core_only"
 APItemplate = "APItemplate.html"
 BackupDir = "NotForSVN/Backups"
-VersionNumber = "0.507"
+VersionNumber = "0.508"
 ThisTarballName = "getdns-" + VersionNumber + ".tgz"
 TheExamplesToMake = [ 
 	"example-all-functions",
