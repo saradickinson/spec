@@ -1,4 +1,4 @@
-/* Created at 2014-09-03-15-14-08*/
+/* Created at 2014-09-03-15-56-29*/
 #ifndef GETDNS_H
 #define GETDNS_H
 
@@ -184,7 +184,7 @@ typedef enum getdns_callback_type_t {
 #define GETDNS_RESPSTATUS_NO_SECURE_ANSWERS 903
 #define GETDNS_RESPSTATUS_NO_SECURE_ANSWERS_TEXT "The context setting for getting only secure responses was specified, and at least one DNS response was received, but no DNS response was determined to be secure through DNSSEC."
 #define GETDNS_RESPSTATUS_ALL_BOGUS_ANSWERS 904
-#define GETDNS_RESPSTATUS_ALL_BOGUS_ANSWERS_TEXT "The context setting for getting only secure responses was specified, and at least one DNS reponse was received, but all received responses for the requested name were bogus."
+#define GETDNS_RESPSTATUS_ALL_BOGUS_ANSWERS_TEXT "The context setting for getting only secure responses was specified, and at least one DNS response was received, but all received responses for the requested name were bogus."
 
 /* Values Associated With Extensions */
 #define GETDNS_EXTENSION_TRUE 1000

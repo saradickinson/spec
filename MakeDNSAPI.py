@@ -114,7 +114,7 @@ DefinesArr.append([ 900, "GETDNS_RESPSTATUS_", "Status Codes for Responses", Def
 	[ "NO_SECURE_ANSWERS", "The context setting for getting only secure responses was specified, and at least one DNS " \
 		+ "response was received, but no DNS response was determined to be secure through DNSSEC." ],
 	[ "ALL_BOGUS_ANSWERS", "The context setting for getting only secure "
-	+ "responses was specified, and at least one DNS reponse was received, "
+	+ "responses was specified, and at least one DNS response was received, "
 	+ "but all received responses for the requested name were bogus." ],
 ])
 
@@ -522,7 +522,7 @@ APIdesc = "index.html"
 APIcoreName = "getdns_core_only"
 APItemplate = "APItemplate.html"
 BackupDir = "NotForSVN/Backups"
-VersionNumber = "0.506"
+VersionNumber = "0.507"
 ThisTarballName = "getdns-" + VersionNumber + ".tgz"
 TheExamplesToMake = [ 
 	"example-all-functions",
