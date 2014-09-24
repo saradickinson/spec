@@ -1518,8 +1518,9 @@ getdns_context_set_edns_maximum_udp_payload_size(
   getdns_context  *context,
   uint16_t        value
 );</div>
-<p class=cont>The value is between 512 and 65535; the default
-is <span class=default>512</span>.</p>
+<p class=cont>The value is between 512 and 65535; when not set, outgoing values will
+adhere to the suggestions in RFC 6891 and may follow a scheme that uses multiple values
+to maximize receptivity.</p>
 
 <div class=forh>
 getdns_return_t
