@@ -163,7 +163,7 @@ defined macros for most of the RRtypes by name; the definition names all start w
 "<code>GETDNS_RRTYPE_</code>". For example, to get the NS records, you can also set the
 <code>request_type</code> to <code>GETDNS_RRTYPE_NS</code>.
 (The full list of request types is always
-<a href="http://www.iana.org/assignments/dns-parameters/dns-parameters.xml">here</a>.)</p>
+<a href="https://www.iana.org/assignments/dns-parameters/dns-parameters.xml">here</a>.)</p>
 
 <p class=define><code><b>*extensions</b></code></p>
 <p class=descrip>Specifies the extensions for this request; the value may be NULL if there are no
@@ -1501,7 +1501,8 @@ getdns_context_set_upstream_recursive_servers(
 );</div>
 <p class=cont>The list of dicts define where a stub resolver will send queries. Each dict contains
 at least two names: <code>address_type</code> (whose value is a bindata; it is currently either
-"IPv4" or "IPv6") and <code>address_data</code> (whose value is a bindata). It might also contain
+"IPv4" or "IPv6") and <code>address_data</code> (whose value is a bindata).
+For IPv6 link-local addresses, a <code>scope_id</code> name (a bindata) can be provided.  It might also contain
 <code>port</code> to specify which port to use to contact these DNS servers; the default is 53. If
 the stub and a recursive resolver both support TSIG (RFC 2845), the <code>upstream_list</code> entry
 can also contain <code>tsig_algorithm</code> (a bindata) that is the name of the TSIG hash
@@ -1681,10 +1682,10 @@ deallocates them.</p>
 
 <hr width=90%>
 
-<p><a rel="license" href="http://creativecommons.org/licenses/by/3.0/deed.en_US"><img alt="Creative
-Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/80x15.png"
+<p><a rel="license" href="https://creativecommons.org/licenses/by/3.0/deed.en_US"><img alt="Creative
+Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/3.0/80x15.png"
 /></a><br />This work is licensed under a <a rel="license"
-href="http://creativecommons.org/licenses/by/3.0/deed.en_US">Creative Commons Attribution 3.0
+href="https://creativecommons.org/licenses/by/3.0/deed.en_US">Creative Commons Attribution 3.0
 Unported License</a>.</p>
 
 </body></html>
