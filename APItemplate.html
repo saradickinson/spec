@@ -766,10 +766,12 @@ This list includes all resource record dicts for all the resource records (DS, D
   . . .
 </pre>
 
-<p>If a request is using a context in which stub resolution is set, and that request also has
-any of the <code>dnssec_return_status</code>, <code>dnssec_return_only_secure</code>, or
-<code>dnssec_return_validation_chain</code> extensions specified, the API will not perform
-the request and will instead return an error of <code>GETDNS_RETURN_DNSSEC_WITH_STUB_DISALLOWED</code>.</p>
+<p>Implementations not capable of performing DNSSEC in stub resolution mode may
+indicate this by not performing a request and instead return an error of 
+<code>GETDNS_RETURN_DNSSEC_WITH_STUB_DISALLOWED</code> when using a context
+in which stub resolution is set, and having any of the
+<code>dnssec_return_status</code>, <code>dnssec_return_only_secure</code>, or
+<code>dnssec_return_validation_chain</code> extensions specified.</p>
 
 <h2>Returning Both IPv4 and IPv6 Responses</h2>
 
