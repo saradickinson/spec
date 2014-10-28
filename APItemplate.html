@@ -540,6 +540,9 @@ this is only a graphical representation; the brackets, commas, quotation marks, 
 are not part of the data. Also, this document uses macro names instead of some of the int
 arguments; of course, the data structures have the actual int in them.</p>
 
+<p>The <code>getdns_dict_get_names</code> helper function creates a newly created list
+containing the names in a dict.  The caller is responsible for disposing this list.</p>
+
 <p>The helper getter functions return references to <code>getdns_dict</code>, <code>getdns_list</code> and <code>getdns_bindata</code> data structures.
 The user must not directly destroy these retrieved "child" data structures; instead, 
 they will automatically be destroyed when the containing "parent" data structure is destroyed.
