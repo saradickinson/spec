@@ -524,7 +524,7 @@ APIdesc = "index.html"
 APIcoreName = "getdns_core_only"
 APItemplate = "APItemplate.html"
 BackupDir = "NotForSVN/Backups"
-VersionNumber = "0.513"
+VersionNumber = "0.6"
 ThisTarballName = "getdns-" + VersionNumber + ".tgz"
 TheExamplesToMake = [ 
 	"example-all-functions",
