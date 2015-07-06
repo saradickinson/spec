@@ -334,6 +334,9 @@ and <code>public_key</code> (a bindata)</p>
 <p class=define>OPENPGPKEY (61)</p>
 <p class=descrip><code>openpgpkey_unknown</code> (a bindata)</p>
 
+<p class=define>CSYNC (62)</p>
+<p class=descrip><code>serial</code> (an int), <code>flags</code> (an int), and <code>type_bit_maps</code> (a bindata)</p>
+
 <p class=define>SPF (99)</p>
 <p class=descrip><code>text</code> (a bindata)</p>
 
@@ -524,7 +527,7 @@ APIdesc = "index.html"
 APIcoreName = "getdns_core_only"
 APItemplate = "APItemplate.html"
 BackupDir = "NotForSVN/Backups"
-VersionNumber = "0.6"
+VersionNumber = "0.601"
 ThisTarballName = "getdns-" + VersionNumber + ".tgz"
 TheExamplesToMake = [ 
 	"example-all-functions",
