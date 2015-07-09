@@ -1,4 +1,4 @@
-/* Created at 2015-07-06-13-57-15*/
+/* Created at 2015-07-09-11-24-47*/
 #ifndef GETDNS_H
 #define GETDNS_H
 
@@ -103,6 +103,19 @@ typedef enum getdns_transport_t {
 #define GETDNS_TRANSPORT_TCP_ONLY_TEXT "See getdns_context_set_dns_transport()"
 #define GETDNS_TRANSPORT_TCP_ONLY_KEEP_CONNECTIONS_OPEN_TEXT "See getdns_context_set_dns_transport()"
 
+/* Transport list arrangements */
+typedef enum getdns_transport_list_t {
+	GETDNS_TRANSPORT_UDP = 1200,
+	GETDNS_TRANSPORT_TCP = 1201,
+	GETDNS_TRANSPORT_TLS = 1202,
+	GETDNS_TRANSPORT_STARTTLS = 1203
+} getdns_transport_list_t;
+
+#define GETDNS_TRANSPORT_UDP_TEXT "See getdns_context_set_dns_transport_list()"
+#define GETDNS_TRANSPORT_TCP_TEXT "See getdns_context_set_dns_transport_list()"
+#define GETDNS_TRANSPORT_TLS_TEXT "See getdns_context_set_dns_transport_list()"
+#define GETDNS_TRANSPORT_STARTTLS_TEXT "See getdns_context_set_dns_transport_list()"
+
 /* Suffix appending methods */
 typedef enum getdns_append_name_t {
 	GETDNS_APPEND_NAME_ALWAYS = 550,
@@ -134,7 +147,8 @@ typedef enum getdns_context_code_t {
 	GETDNS_CONTEXT_CODE_EDNS_DO_BIT = 613,
 	GETDNS_CONTEXT_CODE_DNSSEC_ALLOWED_SKEW = 614,
 	GETDNS_CONTEXT_CODE_MEMORY_FUNCTIONS = 615,
-	GETDNS_CONTEXT_CODE_TIMEOUT = 616
+	GETDNS_CONTEXT_CODE_TIMEOUT = 616,
+	GETDNS_CONTEXT_CODE_IDLE_TIMEOUT = 617
 } getdns_context_code_t;
 
 #define GETDNS_CONTEXT_CODE_NAMESPACES_TEXT "Change related to getdns_context_set_namespaces"
@@ -154,6 +168,7 @@ typedef enum getdns_context_code_t {
 #define GETDNS_CONTEXT_CODE_DNSSEC_ALLOWED_SKEW_TEXT "Change related to getdns_context_set_dnssec_allowed_skew"
 #define GETDNS_CONTEXT_CODE_MEMORY_FUNCTIONS_TEXT "Change related to getdns_context_set_memory_functions"
 #define GETDNS_CONTEXT_CODE_TIMEOUT_TEXT "Change related to getdns_context_set_timeout"
+#define GETDNS_CONTEXT_CODE_IDLE_TIMEOUT_TEXT "Change related to getdns_context_set_idle_timeout"
 
 /* Callback Type Variables */
 typedef enum getdns_callback_type_t {
@@ -260,6 +275,7 @@ typedef enum getdns_callback_type_t {
 #define GETDNS_RRTYPE_CDS 59
 #define GETDNS_RRTYPE_CDNSKEY 60
 #define GETDNS_RRTYPE_OPENPGPKEY 61
+#define GETDNS_RRTYPE_CSYNC 62
 #define GETDNS_RRTYPE_SPF 99
 #define GETDNS_RRTYPE_UINFO 100
 #define GETDNS_RRTYPE_UID 101
@@ -585,6 +601,19 @@ getdns_return_t
 getdns_context_set_dns_transport(
   getdns_context      *context,
   getdns_transport_t  value
+);
+
+getdns_return_t
+getdns_context_set_dns_transport_list(
+  getdns_context           *context,
+  size_t                   transport_count, 
+  getdns_transport_list_t  *transports
+);
+
+getdns_return_t
+getdns_context_set_idle_timeout(
+  getdns_context  *context,
+  uint64_t        timeout
 );
 
 getdns_return_t

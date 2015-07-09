@@ -68,6 +68,13 @@ DefinesArr.append([ 540, "GETDNS_TRANSPORT_", "Transport arrangements", EnumType
 	[ "TCP_ONLY_KEEP_CONNECTIONS_OPEN", "See getdns_context_set_dns_transport()" ]
 ])
 
+DefinesArr.append([ 1200, "GETDNS_TRANSPORT_LIST_", "Transport list arrangements", EnumType,
+	[ "UDP", "See getdns_context_set_dns_transport_list()" ],
+	[ "TCP", "See getdns_context_set_dns_transport_list()" ],
+	[ "TLS", "See getdns_context_set_dns_transport_list()" ],
+	[ "STARTTLS", "See getdns_context_set_dns_transport_list()" ]
+])
+
 DefinesArr.append([ 550, "GETDNS_APPEND_NAME_", "Suffix appending methods", EnumType,
 	[ "ALWAYS", "See getdns_context_set_append_name()" ],
 	[ "ONLY_TO_SINGLE_LABEL_AFTER_FAILURE", "See getdns_context_set_append_name()" ],
@@ -93,6 +100,7 @@ DefinesArr.append([ 600, "GETDNS_CONTEXT_CODE_", "Context codes", EnumType,
 	[ "DNSSEC_ALLOWED_SKEW", "Change related to <code>getdns_context_set_dnssec_allowed_skew</code>" ],
 	[ "MEMORY_FUNCTIONS", "Change related to <code>getdns_context_set_memory_functions</code>" ],
 	[ "TIMEOUT", "Change related to <code>getdns_context_set_timeout</code>" ],
+	[ "IDLE_TIMEOUT", "Change related to <code>getdns_context_set_idle_timeout</code>" ],
 ])
 
 DefinesArr.append([ 700, "GETDNS_CALLBACK_", "Callback Type Variables", EnumType,
@@ -460,6 +468,7 @@ DefinesForRRtypes = '''
 #define GETDNS_RRTYPE_CDS 59
 #define GETDNS_RRTYPE_CDNSKEY 60
 #define GETDNS_RRTYPE_OPENPGPKEY 61
+#define GETDNS_RRTYPE_CSYNC 62
 #define GETDNS_RRTYPE_SPF 99
 #define GETDNS_RRTYPE_UINFO 100
 #define GETDNS_RRTYPE_UID 101
@@ -527,7 +536,7 @@ APIdesc = "index.html"
 APIcoreName = "getdns_core_only"
 APItemplate = "APItemplate.html"
 BackupDir = "NotForSVN/Backups"
-VersionNumber = "0.601"
+VersionNumber = "0.602"
 ThisTarballName = "getdns-" + VersionNumber + ".tgz"
 TheExamplesToMake = [ 
 	"example-all-functions",
@@ -630,6 +639,8 @@ for ThisArr in DefinesArr:
 	hEnumTexts = ""
 	if IsEnumType:
 		EnumName = DefineForCodes.lower() + "t"
+		if DefineForCodes == 'GETDNS_TRANSPORT_LIST_':
+			DefineForCodes = 'GETDNS_TRANSPORT_'
 		if EnumName in ( "getdns_callback_t",):
 			EnumName += "ype_t"
 		hEnums += "typedef enum " + EnumName + " {\n"
