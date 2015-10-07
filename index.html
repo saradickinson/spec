@@ -1169,6 +1169,8 @@ typedef struct getdns_list getdns_list;
 <p class=descrip>Unable to allocate the memory required.</p>
 <p class=define>GETDNS_RETURN_INVALID_PARAMETER</p>
 <p class=descrip>A required parameter had an invalid value.</p>
+<p class=define>GETDNS_RETURN_NOT_IMPLEMENTED</p>
+<p class=descrip>The library did not have the requested API feature implemented.</p>
 
 
 <h2>5.3 <a id="TypeList">Types of RDATA Returned in the API</a></h2>
@@ -2491,7 +2493,7 @@ getdns_pretty_print_dict() for debugging.</li>
 
 <h1>9. The Generated Files</h1>
 
-<p>There is <a href="getdns-0.605.tgz">a tarball</a> that includes the .h files,
+<p>There is <a href="getdns-0.606.tgz">a tarball</a> that includes the .h files,
 the examples, and so on. The examples all make, even though there is no API implementation, based
 on a pseudo-implementation in the tarball; see make-examples-PLATFORM.sh. Note that this currently builds fine
 on the Macintosh and Ubuntu; help is definitely appreciated on making the build process

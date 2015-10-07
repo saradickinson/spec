@@ -1,4 +1,4 @@
-Private repos for the getdns API
+Public getdns API specification editoing repo
 ==========
 
 Nothing interesting here.

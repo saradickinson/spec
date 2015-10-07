@@ -1,4 +1,4 @@
-/* Created at 2015-10-07-11-57-15*/
+/* Created at 2015-10-07-12-00-43*/
 #ifndef GETDNS_H
 #define GETDNS_H
 
@@ -27,7 +27,8 @@ typedef enum getdns_return_t {
 	GETDNS_RETURN_EXTENSION_MISFORMAT = 308,
 	GETDNS_RETURN_DNSSEC_WITH_STUB_DISALLOWED = 309,
 	GETDNS_RETURN_MEMORY_ERROR = 310,
-	GETDNS_RETURN_INVALID_PARAMETER = 311
+	GETDNS_RETURN_INVALID_PARAMETER = 311,
+	GETDNS_RETURN_NOT_IMPLEMENTED = 312
 } getdns_return_t;
 
 #define GETDNS_RETURN_GOOD_TEXT "Good"
@@ -44,6 +45,7 @@ typedef enum getdns_return_t {
 #define GETDNS_RETURN_DNSSEC_WITH_STUB_DISALLOWED_TEXT "A query was made with a context that is using stub resolution and a DNSSEC extension specified."
 #define GETDNS_RETURN_MEMORY_ERROR_TEXT "Unable to allocate the memory required."
 #define GETDNS_RETURN_INVALID_PARAMETER_TEXT "A required parameter had an invalid value."
+#define GETDNS_RETURN_NOT_IMPLEMENTED_TEXT "The library did not have the requested API feature implemented."
 
 /* DNSSEC values */
 #define GETDNS_DNSSEC_SECURE 400
