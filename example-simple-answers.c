@@ -3,8 +3,6 @@
 #include <stdio.h>
 #include <getdns_libevent.h>
 
-#define UNUSED(x) ((void)(x))
-
 /* Set up the callback function, which will also do the processing of the results */
 void callback(getdns_context        *context,
               getdns_callback_type_t callback_type,
@@ -17,7 +15,7 @@ void callback(getdns_context        *context,
 	getdns_bindata  *address_data;
 	char            *first = NULL, *second = NULL;
 
-	UNUSED(context);
+	(void) context; /* unused parameter */
 
 	printf( "Callback for query \"%s\" with request ID %"PRIu64".\n"
 	      , (char *)userarg, transaction_id );

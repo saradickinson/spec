@@ -3,8 +3,6 @@
 #include <stdio.h>
 #include <getdns_libevent.h>
 
-#define UNUSED(x) ((void)(x))
-
 /* Set up the callback function, which will also do the processing of the results */
 void callback(getdns_context        *context,
               getdns_callback_type_t callback_type,
@@ -16,8 +14,7 @@ void callback(getdns_context        *context,
 	getdns_list    *answer;
 	size_t          n_answers, i;
 
-	UNUSED(context);
-	UNUSED(userarg);
+	(void) context; (void) userarg; /* unused parameters */
 
 	switch(callback_type) {
 	case GETDNS_CALLBACK_CANCEL:

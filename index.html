@@ -1475,8 +1475,6 @@ function.</p>
 <span class="cp">#include &lt;stdio.h&gt;</span>
 <span class="cp">#include &lt;getdns_libevent.h&gt;</span>
 
-<span class="cp">#define UNUSED(x) ((void)(x))</span>
-
 <span class="cm">/* Set up the callback function, which will also do the processing of the results */</span>
 <span class="kt">void</span> <span class="nf">callback</span><span class="p">(</span><span class="n">getdns_context</span>        <span class="o">*</span><span class="n">context</span><span class="p">,</span>
               <span class="kt">getdns_callback_type_t</span> <span class="n">callback_type</span><span class="p">,</span>
@@ -1489,7 +1487,7 @@ function.</p>
     <span class="n">getdns_bindata</span>  <span class="o">*</span><span class="n">address_data</span><span class="p">;</span>
     <span class="kt">char</span>            <span class="o">*</span><span class="n">first</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">,</span> <span class="o">*</span><span class="n">second</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
 
-    <span class="n">UNUSED</span><span class="p">(</span><span class="n">context</span><span class="p">);</span>
+    <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">context</span><span class="p">;</span> <span class="cm">/* unused parameter */</span>
 
     <span class="n">printf</span><span class="p">(</span> <span class="s">&quot;Callback for query </span><span class="se">\&quot;</span><span class="s">%s</span><span class="se">\&quot;</span><span class="s"> with request ID %&quot;</span><span class="n">PRIu64</span><span class="s">&quot;.</span><span class="se">\n</span><span class="s">&quot;</span>
           <span class="p">,</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="n">userarg</span><span class="p">,</span> <span class="n">transaction_id</span> <span class="p">);</span>
@@ -1596,8 +1594,6 @@ their TTLs.</p>
 <span class="cp">#include &lt;stdio.h&gt;</span>
 <span class="cp">#include &lt;getdns_libevent.h&gt;</span>
 
-<span class="cp">#define UNUSED(x) ((void)(x))</span>
-
 <span class="cm">/* Set up the callback function, which will also do the processing of the results */</span>
 <span class="kt">void</span> <span class="nf">callback</span><span class="p">(</span><span class="n">getdns_context</span>        <span class="o">*</span><span class="n">context</span><span class="p">,</span>
               <span class="kt">getdns_callback_type_t</span> <span class="n">callback_type</span><span class="p">,</span>
@@ -1609,8 +1605,7 @@ their TTLs.</p>
     <span class="n">getdns_list</span>    <span class="o">*</span><span class="n">replies_tree</span><span class="p">;</span>
     <span class="kt">size_t</span>          <span class="n">n_replies</span><span class="p">,</span> <span class="n">i</span><span class="p">;</span>
 
-    <span class="n">UNUSED</span><span class="p">(</span><span class="n">context</span><span class="p">);</span>
-    <span class="n">UNUSED</span><span class="p">(</span><span class="n">userarg</span><span class="p">);</span>
+    <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">context</span><span class="p">;</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">userarg</span><span class="p">;</span> <span class="cm">/* unused parameters */</span>
 
     <span class="k">switch</span><span class="p">(</span><span class="n">callback_type</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">case</span> <span class="nl">GETDNS_CALLBACK_CANCEL</span><span class="p">:</span>
@@ -1831,8 +1826,6 @@ as it is for the synchronous example, it is just done in <code>main()</code>.</p
 <span class="cp">#include &lt;stdio.h&gt;</span>
 <span class="cp">#include &lt;getdns_libevent.h&gt;</span>
 
-<span class="cp">#define UNUSED(x) ((void)(x))</span>
-
 <span class="cm">/* Set up the callback function, which will also do the processing of the results */</span>
 <span class="kt">void</span> <span class="nf">callback</span><span class="p">(</span><span class="n">getdns_context</span>        <span class="o">*</span><span class="n">context</span><span class="p">,</span>
               <span class="kt">getdns_callback_type_t</span> <span class="n">callback_type</span><span class="p">,</span>
@@ -1844,8 +1837,7 @@ as it is for the synchronous example, it is just done in <code>main()</code>.</p
     <span class="n">getdns_list</span>    <span class="o">*</span><span class="n">answer</span><span class="p">;</span>
     <span class="kt">size_t</span>          <span class="n">n_answers</span><span class="p">,</span> <span class="n">i</span><span class="p">;</span>
 
-    <span class="n">UNUSED</span><span class="p">(</span><span class="n">context</span><span class="p">);</span>
-    <span class="n">UNUSED</span><span class="p">(</span><span class="n">userarg</span><span class="p">);</span>
+    <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">context</span><span class="p">;</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">userarg</span><span class="p">;</span> <span class="cm">/* unused parameters */</span>
 
     <span class="k">switch</span><span class="p">(</span><span class="n">callback_type</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">case</span> <span class="nl">GETDNS_CALLBACK_CANCEL</span><span class="p">:</span>
