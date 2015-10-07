@@ -537,7 +537,7 @@ APIdesc = "index.html"
 APIcoreName = "getdns_core_only"
 APItemplate = "APItemplate.html"
 BackupDir = "NotForSVN/Backups"
-VersionNumber = "0.606"
+VersionNumber = "0.607"
 ThisTarballName = "getdns-" + VersionNumber + ".tgz"
 TheExamplesToMake = [ 
 	"example-all-functions",
@@ -560,15 +560,15 @@ def ReplaceForHTML(InStr):
 
 	return(highlight(InStr.replace("\t", "    "), MyCLexer(), HtmlFormatter()))
 
-# Backup the files
-FilesToBackup = ["MakeDNSAPI.py", APItemplate, APIcoreName + ".c"]
-for ThisExample in TheExamplesToMake:
-	FilesToBackup.append(ThisExample + ".c")
-for ThisFile in FilesToBackup:
-	try:
-		copy2(ThisFile, pathjoin(BackupDir, Now+ThisFile))
-	except:
-		print("Warning: Could not make a backup of '" + ThisFile + "' into the '" + BackupDir + "' directory.")
+## Backup the files
+#FilesToBackup = ["MakeDNSAPI.py", APItemplate, APIcoreName + ".c"]
+#for ThisExample in TheExamplesToMake:
+#	FilesToBackup.append(ThisExample + ".c")
+#for ThisFile in FilesToBackup:
+#	try:
+#		copy2(ThisFile, pathjoin(BackupDir, Now+ThisFile))
+#	except:
+#		print("Warning: Could not make a backup of '" + ThisFile + "' into the '" + BackupDir + "' directory.")
 
 # Open the input
 try:
@@ -786,7 +786,7 @@ for ThisStyle in BuildStyle.keys():
 	MakeCleanAll = "rm -rf *.o *.dylib\n"
 	MakeC = "%(compiler)s -std=c%(stdyr)s -c -fPIC -pedantic -g -I./ -Werror -Wall -Wextra -c %(inname)s.c\n"
 	MakeGetdns = "%(compiler)s -std=c%(stdyr)s " + Sharing + " -fPIC -levent_core -o libgetdns." + Extension + " " + APIcoreName + ".o\n"
-	MakeExampleExe = "%(compiler)s -std=c%(stdyr)s -fPIC -L./ %(inname)s.o -levent_core -lgetdns -o %(inname)s \n"
+	MakeExampleExe = "%(compiler)s -std=c%(stdyr)s -fPIC -L./ %(inname)s.o -levent_core -lgetdns -lgetdns_ext_event -lssl -lcrypto -o %(inname)s \n"
 
 	makef = open(MakeFileName, mode="w")
 	for ThisCompiler in ("gcc", "clang"):

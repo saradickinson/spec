@@ -550,6 +550,8 @@ The user must not directly destroy these retrieved "child" data structures; inst
 they will automatically be destroyed when the containing "parent" data structure is destroyed.
 Because of this, retrieved "child" data structures cannot be used any more after the containing "parent" data structure has been destroyed.</p>
 
+<p>When the name parameter to the <code>getdns_dict_get_</code> functions, starts with a '<code>/</code>' (<code>%x2F</code>) character, it is interpreted as a JSON Pointer as described in RFC 6901, and will then be used to dereference the nested data structures to get to the requested data type.</p>
+
 <h2>Creating Data Structures</h2>
 
 <p>Some of the features of the API require that you create your own data structures to be used in
@@ -617,6 +619,8 @@ list. <code>getdns_dict_remove_name()</code> will return
 
 <p>The helper setter functions store copies of the given "child" values.
 It is the responsibility of the caller to dispose of the original values.</p>
+
+<p>When the name parameter to the <code>getdns_dict_set_</code> functions, starts with a '<code>/</code>' (<code>%x2F</code>) character, it is interpreted as a JSON Pointer as described in RFC 6901, and will then be used to dereference the nested data structures to set the given value at the specified name or list index.</p>
 
 <h1><a id="Extensions">Extensions</a></h1>
 
@@ -1156,20 +1160,17 @@ callback function, add a check for the DNSSEC status. It shows how to add two
 extensions to the <code>extensions</code> argument of the call.</p>
 
 <pre>
-getdns_dict * this_extensions = getdns_dict_create();
-this_ret = getdns_dict_set_int(this_extensions, "return_both_v4_and_v6", GETDNS_EXTENSION_TRUE);
-this_ret = getdns_dict_set_int(this_extensions, "dnssec_return_status", GETDNS_EXTENSION_TRUE);
+getdns_dict *extensions = getdns_dict_create();
+r = getdns_dict_set_int(extensions, "return_both_v4_and_v6", GETDNS_EXTENSION_TRUE);
+r = getdns_dict_set_int(extensions, "dnssec_return_status", GETDNS_EXTENSION_TRUE);
 . . .
-if (this_type == GETDNS_RRTYPE_A)
-{
-    uint32_t this_dnssec_status;
-    this_ret = getdns_dict_get_int(this_answer, "dnssec_status", &amp;this_dnssec_status);
-    if (this_dnssec_status != GETDNS_DNSSEC_SECURE)
-    {
+if (rr_type == GETDNS_RRTYPE_A) {
+    uint32_t dnssec_status;
+    r = getdns_dict_get_int(answer, "dnssec_status", &amp;dnssec_status);
+    if (dnssec_status != GETDNS_DNSSEC_SECURE) {
         // Log the DNSSEC status somewhere
-    }
-    else
-    {
+
+    } else {
         // Deal with the record however you were going to
     }
 }
