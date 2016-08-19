@@ -153,7 +153,7 @@ described <a href="#Contexts">later in this document</a>. Note that a context <i
 before calling the function.</p>
 
 <p class=define><code><b>*name</b></code></p>
-<p class=descrip>This is a null-terminted string consisting of an
+<p class=descrip>This is a null-terminated string consisting of an
 ASCII-based domain name to be looked up.
 The values here follow the rules in section 2.1 of RFC 4343
 to allow non-ASCII octets and special characters in labels.</p>
@@ -173,7 +173,7 @@ extensions. See <a href="#Extensions">the section below</a> for information on h
 the extensions used for a request.</p>
 
 <p class=define><code><b>*userarg</b></code></p>
-<p class=descrip>A void* that is passed to the function, which the funciton
+<p class=descrip>A void* that is passed to the function, which the function
 returns to the callback function untouched. <code>userarg</code> can be used by the callback
 function for any user-specific data needed. This can be NULL.</p>
 
@@ -292,7 +292,7 @@ href="#Contexts">later</a> for more advanced use.</p>
 <p class=define><code><b>*response</b></code></p>
 <p class=descrip>A response object with the response data.
 This is described below.
-The application is responsible for cleaning up the response object with getdns_dict_destroy.</p>
+The application is responsible for cleaning up the response object with <code>getdns_dict_destroy</code>.</p>
 
 <p class=define><code><b>*userarg</b></code></p>
 <p class=descrip>Identical to the <code>*userarg</code> passed to the calling function.</p>
@@ -2263,12 +2263,12 @@ is <span class=default>0</span>.</p>
 
 <h2>8.7 Context Specific to Stub Resolvers</h2>
 
-<p>An application can change the quering mechanism of a context to be to act as a stub
+<p>An application can change the querying mechanism of a context to be to act as a stub
 resolver. Such an application might first get the default information to make this change
 from the operating system, probably through DHCP.</p>
 
 <p>Note that if a context is changed to being a stub resolver, this automatically prevents the application
-from using the extenstions for DNSSEC. An application that wants to both do DNSSEC and stub resolution
+from using the extensions for DNSSEC. An application that wants to both do DNSSEC and stub resolution
 must do its own DNSSEC processing, possibly with the <code>getdns_validate_dnssec()</code> function.</p>
 
 <div class=forh>
